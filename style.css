@@ -68,18 +68,18 @@ body {
 }
 
 #logo-img {
-    /* 1. Un tamaño un poco mayor al 100% para tener margen de maniobra */
-    width: 125%; 
-    height: 125%;
+    /* 1. Hacemos la imagen un 40% más grande que el círculo */
+    width: 140%; 
+    height: 140%;
     
-    /* 2. 'cover' ayuda a que la imagen llene el círculo sin dejar huecos */
-    object-fit: cover; 
+    /* 2. Cambiamos a 'contain' para que no se deforme al estirarse */
+    object-fit: contain; 
     border-radius: 50%;
 
-    /* 3. Ajuste fino 🎯 */
-    /* El primer número (-12px) mueve el logo a la izquierda para esconder lo blanco */
-    /* El segundo número (-2px) lo sube apenas un poco */
-    transform: translate(-12px, -2px); 
+    /* 3. EL AJUSTE DEFINITIVO 🎯 */
+    /* Mantenemos un valor negativo en X (-14px) para "empujar" lo blanco hacia afuera */
+    /* y un valor negativo en Y (-5px) para centrarlo verticalmente */
+    transform: translate(-14px, -5px); 
 
     transition: all 0.3s ease;
 }
