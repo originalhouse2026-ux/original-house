@@ -69,14 +69,18 @@ body {
 
 /* Imagen del Logo con ajuste de precisión */
 #logo-img {
-    width: 110%; 
-    height: 110%;
-    object-fit: contain;
-    /* 🎯 Ajustamos el dibujo blanco para que no se vea "mordido" por un lado */
-    transform: translate(-3px, -1px); 
+    width: 100%;       /* Mantenemos el tamaño para que sea responsivo */
+    height: 100%;
+    object-fit: cover; /* Cambiamos a 'cover' para asegurar que llene el círculo */
     border-radius: 50%;
-}
+    
+    /* 🎯 ESTA ES LA CLAVE PARA QUITAR LA MEDIA LUNA BLANCA */
+    /* translate(14px, 1px): Empuja la imagen 14 píxeles a la derecha (eje X) ↔️ */
+    /* y 1 píxel hacia abajo (eje Y) ↕️ */
+    transform: translate(14px, 1px); 
 
+    transition: all 0.3s ease;
+}
 .logo-glow {
     position: absolute;
     width: 100%;
