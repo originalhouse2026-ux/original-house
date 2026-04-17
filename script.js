@@ -6,7 +6,7 @@
  * Make your Google Sheet public, then use this format:
  * https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=0
  */
-const GOOGLE_SHEETS_CSV_URL = 'PASTE_YOUR_GOOGLE_SHEETS_CSV_LINK_HERE';
+const GOOGLE_SHEETS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRHh-u6rZPLRMNhaw2ILjUFgHULwrpkDogwQBREHx6fHIh7k_mduLn4DjftOkRbpAEY8lUrkajwaxQK/pub?output=csv'; 
 
 /**
  * Product data structure
