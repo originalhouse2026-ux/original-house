@@ -67,16 +67,19 @@ body {
         inset -8px -8px 16px rgba(50,50,50,0.3);
 }
 
-
-width: 250%; 
-    height: 250%;
+#logo-img {
+    /* 1. Un tamaño un poco mayor al 100% para tener margen de maniobra */
+    width: 125%; 
+    height: 125%;
     
-    object-fit: contain; 
+    /* 2. 'cover' ayuda a que la imagen llene el círculo sin dejar huecos */
+    object-fit: cover; 
     border-radius: 50%;
 
-    /* 2. Movimiento extremo a la izquierda ↔️ */
-    /* Esto debería "esconder" casi todo el lado derecho del logo */
-    transform: translate(-80px, 0); 
+    /* 3. Ajuste fino 🎯 */
+    /* El primer número (-12px) mueve el logo a la izquierda para esconder lo blanco */
+    /* El segundo número (-2px) lo sube apenas un poco */
+    transform: translate(-12px, -2px); 
 
     transition: all 0.3s ease;
 }
