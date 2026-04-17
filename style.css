@@ -29,9 +29,9 @@ body {
 }
 
 .header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    display: flex;
+    flex-direction: column; /* Alinea los elementos uno arriba del otro */
+    align-items: center;    /* Centra horizontalmente todo el contenido */
     text-align: center;
 }
 
@@ -69,13 +69,11 @@ body {
 
 /* Imagen del Logo con ajuste de precisión */
 #logo-img {
-    width: 115%;  /* 🔎 Agrandamos para que el borde negro sea el límite */
-    height: 115%;
-    object-fit: contain;
-    border-radius: 50%;
-    /* 📏 Compensamos el aire asimétrico de la imagen original */
-    transform: translate(6px, 2px); 
-    transition: all 0.3s ease;
+    /* Ajusta estos números (px) hasta que veas el blanco perfectamente centrado */
+    transform: translate(-2px, -1px); 
+    object-fit: cover;
+    width: 100%; 
+    height: 100%;
 }
 
 .logo-glow {
@@ -214,18 +212,12 @@ body {
 }
 
 .product-card {
-    background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
-    border-radius: 20px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 
-        20px 20px 40px rgba(0,0,0,0.6),
-        -20px -20px 40px rgba(30,30,30,0.3),
-        inset 8px 8px 16px rgba(0,0,0,0.4),
-        inset -8px -8px 16px rgba(40,40,40,0.2);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-info {
+    margin-top: auto; /* Empuja el texto hacia abajo para que no lo tape la imagen */
 }
 
 .product-card:hover {
