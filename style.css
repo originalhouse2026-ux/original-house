@@ -58,10 +58,10 @@ body {
 }
 
 #logo-img {
-    width: 120%;       /* Subimos del 100% al 120% para que el logo se vea más grande */
-    height: 120%;      /* Hacemos lo mismo con la altura */
+    width: 140%;       /* Subimos a 140% para eliminar el aire de los lados */
+    height: 140%;      /* Mantenemos la proporción */
     border-radius: 50%;
-    object-fit: contain; /* Cambiamos cover por contain para que no se corte el diseño importante */
+    object-fit: cover;  /* "Cover" es clave aquí: llena el círculo y centra lo importante */
     transition: all 0.3s ease;
 }
 
