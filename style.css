@@ -58,10 +58,11 @@ body {
 }
 
 #logo-img {
-    width: 140%;       /* Subimos a 140% para eliminar el aire de los lados */
-    height: 140%;      /* Mantenemos la proporción */
+    width: 130%;        /* Ajustamos el tamaño para que llene bien el círculo */
+    height: 130%;
     border-radius: 50%;
-    object-fit: cover;  /* "Cover" es clave aquí: llena el círculo y centra lo importante */
+    object-fit: contain;
+    transform: translateX(10px); /* ⬅️ ESTA ES LA CLAVE: empuja la imagen 10px a la derecha */
     transition: all 0.3s ease;
 }
 
