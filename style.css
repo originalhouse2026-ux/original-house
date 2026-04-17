@@ -54,7 +54,7 @@ body {
         -20px -20px 40px rgba(76, 175, 80, 0.1),
         inset 8px 8px 16px rgba(0,0,0,0.5),
         inset -8px -8px 16px rgba(50,50,50,0.3);
-    transform: scale(1.05) rotate(5deg);
+    transform: scale(1.1) rotate(360deg);
 }
 
 #logo-img {
