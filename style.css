@@ -30,8 +30,10 @@ body {
 }
 
 .logo-container {
-    width: 120px;
-    height: 120px;
+    width: 140px;  /* Antes 120px */
+    height: 140px; /* Antes 120px */
+    /* ... lo demás se queda igual ... */
+}
     margin: 0 auto 1.5rem;
     background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
     border-radius: 50%;
@@ -58,18 +60,13 @@ body {
 }
 
 #logo-img {
-    /* Mantenemos el tamaño base para el centrado de flex */
-    width: 100%;
-    height: 100%;
+    width: 95%;      /* Al ser un poco menor al 100%, evitamos que toque los bordes y se corte */
+    height: 95%;
+    object-fit: contain;
     border-radius: 50%;
-    object-fit: contain; /* Esto previene que se deforme */
+    /* 🎯 Ajuste de precisión para centrar el dibujo */
+    transform: translateX(5px); /* Empuja el logo a la derecha para equilibrar el espacio */
     transition: all 0.3s ease;
-
-    /* 🎯 ESTA ES LA MAGIA DEL CENTRADO DE PRECISIÓN */
-    /* scale(1.6): agranda la imagen un poco más (un 160%) */
-    /* translate(15px, 10px): empuja la imagen 15px a la derecha (eje X) ↔️ */
-    /* y 10px hacia abajo (eje Y) ↕️ */
-    transform: translate(15px, 10px) scale(1.6);
 }
 
 .logo-glow {
