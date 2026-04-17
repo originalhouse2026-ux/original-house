@@ -58,11 +58,11 @@ body {
 }
 
 #logo-img {
-    width: 80px;
-    height: 80px;
+    width: 100%;       /* Ocupa todo el ancho del círculo */
+    height: 100%;      /* Ocupa todo el alto del círculo */
     border-radius: 50%;
-    object-fit: contain;
-    filter: drop-shadow(0 0 20px #00ff88);
+    object-fit: cover; /* Esto asegura que la imagen llene el círculo sin deformarse */
+    display: block;    /* Elimina espacios fantasma debajo de la imagen */
     transition: all 0.3s ease;
 }
 
