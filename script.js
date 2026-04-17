@@ -72,7 +72,7 @@ async function loadProducts() {
  */
 function parseCSV(csvText) {
     const lines = csvText.trim().split('\n');
-    const headers = lines[0].toLowerCase().split(',').map(h => h.trim().replace(/"/g, ''));
+    const headers = lines[0].split(lines[0].includes(';') ? ';' : ',').map(h => h.trim().replace(/"/g, ''));
     
     return lines.slice(1).map(line => {
         const values = line.includes(';') ? line.split(';') : line.split(',');
