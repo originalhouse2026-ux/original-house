@@ -58,11 +58,12 @@ body {
 }
 
 #logo-img {
-    width: 130%;        /* Ajustamos el tamaño para que llene bien el círculo */
-    height: 130%;
+    width: 145%;        /* Agrandamos un poco más para que el borde negro sea el límite */
+    height: 145%;
     border-radius: 50%;
     object-fit: contain;
-    transform: translateX(10px); /* ⬅️ ESTA ES LA CLAVE: empuja la imagen 10px a la derecha */
+    /* La línea de abajo es la clave para centrarlo manualmente */
+    transform: translate(8px, 0); /* Mueve el logo 8 píxeles a la derecha */
     transition: all 0.3s ease;
 }
 
