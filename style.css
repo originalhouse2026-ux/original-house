@@ -68,18 +68,18 @@ body {
 }
 
 #logo-img {
-    /* 1. Hacemos la imagen un 40% más grande que el círculo */
-    width: 140%; 
-    height: 140%;
+    /* 1. Tamaño controlado (apenas un poco más grande que el círculo) */
+    width: 120%; 
+    height: 120%;
     
-    /* 2. Cambiamos a 'contain' para que no se deforme al estirarse */
-    object-fit: contain; 
+    /* 2. 'cover' asegura que la imagen llene el círculo negro */
+    object-fit: cover; 
     border-radius: 50%;
 
-    /* 3. EL AJUSTE DEFINITIVO 🎯 */
-    /* Mantenemos un valor negativo en X (-14px) para "empujar" lo blanco hacia afuera */
-    /* y un valor negativo en Y (-5px) para centrarlo verticalmente */
-    transform: translate(-14px, -5px); 
+    /* 3. CENTRADO DEFINITIVO 🎯 */
+    /* El primer número (-12px) mueve la imagen a la IZQUIERDA para ocultar lo blanco */
+    /* El segundo número (-2px) la sube apenas un poco */
+    transform: translate(-12px, -2px); 
 
     transition: all 0.3s ease;
 }
