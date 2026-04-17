@@ -83,11 +83,11 @@ function parseCSV(csvText) {
         });
         
         // Ensure required fields
-        product.name = product.name || 'Unnamed Product';
-        product.price = product.price || '0';
-        product.category = product.category || 'Other';
-        product.image = product.image || 'https://via.placeholder.com/400x300/1a1a1a/ffffff?text=No+Image';
-        product.fabric = product.fabric || '250g Catar Fabric';
+     product.name = product['NOMBRE'] || 'Sin nombre';
+product.price = product['PRECIO'] || '0';
+product.category = product['CATEGORÍA'] || 'Otros';
+product.image = product['LINK_IMAGEN'] || '';
+product.fabric = product['DESCRIPCIÓN'] || '250g Catar Fabric';
         
         return product;
     }).filter(product => product.name && product.price);
