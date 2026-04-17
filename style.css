@@ -1,3 +1,6 @@
+/* =========================================
+   ESTILOS GENERALES Y BASE
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +15,9 @@ body {
     overflow-x: hidden;
 }
 
+/* =========================================
+   HEADER Y LOGO (IDENTIDAD VISUAL)
+   ========================================= */
 .header {
     padding: 2rem 0;
     background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
@@ -29,43 +35,46 @@ body {
     text-align: center;
 }
 
+/* Contenedor Circular del Logo */
 .logo-container {
-    width: 140px;  /* Antes 120px */
-    height: 140px; /* Antes 120px */
-    /* ... lo demás se queda igual ... */
-}
-    margin: 0 auto 1.5rem;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 1.5rem; /* ↔️ Centra el bloque en el header */
     background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
     border-radius: 50%;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex;          /* 🎯 Centrado interno */
+    align-items: center;    /* ↕️ Centrado vertical */
+    justify-content: center; /* ↔️ Centrado horizontal */
+    overflow: hidden;       /* ✂️ Recorta el logo para que sea circular */
     box-shadow: 
         15px 15px 30px rgba(0,0,0,0.6),
         -15px -15px 30px rgba(30,30,30,0.3),
         inset 5px 5px 10px rgba(0,0,0,0.4),
         inset -5px -5px 10px rgba(40,40,40,0.2);
-    transition: all 0.3s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    z-index: 10;
 }
 
+/* Efecto de Rotación y Zoom al pasar el mouse */
 .logo-container:hover {
+    transform: rotate(360deg) scale(1.05);
     box-shadow: 
         20px 20px 40px rgba(0,0,0,0.7),
         -20px -20px 40px rgba(76, 175, 80, 0.1),
         inset 8px 8px 16px rgba(0,0,0,0.5),
         inset -8px -8px 16px rgba(50,50,50,0.3);
-    transform: scale(1.1) rotate(360deg);
 }
 
+/* Imagen del Logo con ajuste de precisión */
 #logo-img {
-    width: 95%;      /* Al ser un poco menor al 100%, evitamos que toque los bordes y se corte */
-    height: 95%;
+    width: 115%;  /* 🔎 Agrandamos para que el borde negro sea el límite */
+    height: 115%;
     object-fit: contain;
     border-radius: 50%;
-    /* 🎯 Ajuste de precisión para centrar el dibujo */
-    transform: translateX(5px); /* Empuja el logo a la derecha para equilibrar el espacio */
+    /* 📏 Compensamos el aire asimétrico de la imagen original */
+    transform: translate(6px, 2px); 
     transition: all 0.3s ease;
 }
 
@@ -76,6 +85,7 @@ body {
     border-radius: 50%;
     background: radial-gradient(circle, rgba(0,255,136,0.3) 0%, transparent 70%);
     animation: logoPulse 2s infinite;
+    pointer-events: none;
 }
 
 @keyframes logoPulse {
@@ -83,6 +93,7 @@ body {
     50% { opacity: 0.6; transform: scale(1.1); }
 }
 
+/* Títulos de Marca */
 .brand-title {
     font-family: 'Orbitron', monospace;
     font-size: 2.5rem;
@@ -111,7 +122,9 @@ body {
     text-shadow: 0 0 10px rgba(0,255,136,0.5);
 }
 
-/* Filters */
+/* =========================================
+   FILTROS Y NAVEGACIÓN
+   ========================================= */
 .filters-section {
     padding: 2rem 0;
     background: rgba(18,18,18,0.8);
@@ -183,7 +196,9 @@ body {
     color: #121212;
 }
 
-/* Products Grid */
+/* =========================================
+   GRID DE PRODUCTOS
+   ========================================= */
 .products-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -276,6 +291,9 @@ body {
     text-shadow: 0 0 10px rgba(0,255,136,0.3);
 }
 
+/* =========================================
+   BOTONES Y UTILIDADES
+   ========================================= */
 .whatsapp-btn {
     width: 100%;
     padding: 16px;
@@ -344,4 +362,6 @@ body {
     width: 60px;
     height: 60px;
     bottom: 40px;
-    right
+    right: 40px;
+    z-index: 1000;
+}
