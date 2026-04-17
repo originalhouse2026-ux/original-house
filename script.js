@@ -75,7 +75,7 @@ function parseCSV(csvText) {
     const headers = lines[0].toLowerCase().split(',').map(h => h.trim().replace(/"/g, ''));
     
     return lines.slice(1).map(line => {
-        const values = line.split(';').map(v => v.trim().replace(/"/g, ''));
+        const values = line.includes(';') ? line.split(';') : line.split(',');
         const product = {};
         
         headers.forEach((header, index) => {
