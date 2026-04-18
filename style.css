@@ -68,18 +68,19 @@ body {
 }
 
 #logo-img {
-    /* 1. Tamaño controlado (apenas un poco más grande que el círculo) */
-    width: 120%; 
-    height: 120%;
+    /* 1. Hacemos la imagen gigante para forzar el desborde */
+    /* De esta forma, el "aire" blanco de la derecha quedará FUERA del círculo */
+    width: 250%;       
+    height: 250%;
     
-    /* 2. 'cover' asegura que la imagen llene el círculo negro */
-    object-fit: cover; 
+    /* 2. 'contain' asegura que la imagen no se estire de forma asimétrica */
+    object-fit: contain; 
     border-radius: 50%;
-
-    /* 3. CENTRADO DEFINITIVO 🎯 */
-    /* El primer número (-12px) mueve la imagen a la IZQUIERDA para ocultar lo blanco */
-    /* El segundo número (-2px) la sube apenas un poco */
-    transform: translate(-12px, -2px); 
+    
+    /* 3. MOVIMIENTO CLAVE 🎯 */
+    /* translate(-80px, -20px): Empuja la imagen 80 píxeles a la izquierda (eje X) ↔️ */
+    /* y 20 píxeles hacia arriba (eje Y) ↕️ */
+    transform: translate(-80px, -20px); 
 
     transition: all 0.3s ease;
 }
