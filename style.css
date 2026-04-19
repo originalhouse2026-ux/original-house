@@ -39,21 +39,14 @@ body {
 .logo-container {
     width: 140px;
     height: 140px;
-    margin: 0 auto 1.5rem; /* ↔️ Centra el bloque en el header */
-    background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+    margin: 0 auto 1.5rem;
+    background: red !important; /* 🚩 SI NO VES ROJO, EL CSS NO ESTÁ CARGANDO */
     border-radius: 50%;
     position: relative;
-    display: flex;          /* 🎯 Centrado interno */
-    align-items: center;    /* ↕️ Centrado vertical */
-    justify-content: center; /* ↔️ Centrado horizontal */
-    overflow: hidden;       /* ✂️ Recorta el logo para que sea circular */
-    box-shadow: 
-        15px 15px 30px rgba(0,0,0,0.6),
-        -15px -15px 30px rgba(30,30,30,0.3),
-        inset 5px 5px 10px rgba(0,0,0,0.4),
-        inset -5px -5px 10px rgba(40,40,40,0.2);
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Esto debería recortar el logo */
     z-index: 10;
 }
 
@@ -68,19 +61,10 @@ body {
 }
 
 #logo-img {
-    /* 1. Forzamos un tamaño pequeño y controlado */
     width: 110% !important; 
     height: 110% !important;
-    
-    /* 2. Aseguramos que se ajuste al círculo */
-    object-fit: cover !important; 
-    border-radius: 50% !important;
-
-    /* 3. Re-centramos con valores pequeños 🎯 */
-    /* Mueve el logo un poco a la izquierda para tapar el borde blanco */
-    transform: translate(-10px, -2px) !important; 
-
-    transition: all 0.3s ease;
+    object-fit: cover !important;
+    transform: translate(-10px, -2px) !important;
 }
 .logo-glow {
     position: absolute;
