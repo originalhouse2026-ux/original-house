@@ -37,19 +37,12 @@ body {
 }
 /* Contenedor Circular del Logo */
 .logo-container {
-    width: 140px;
-    height: 140px;
-    margin: 0 auto 1.5rem;
-    background: red !important; /* 🚩 SI NO VES ROJO, EL CSS NO ESTÁ CARGANDO */
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden; /* Esto debería recortar el logo */
-    z-index: 10;
+    /* ... tus otras propiedades (width, height, border) ... */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: hidden !important; /* Corta lo que se salga del círculo */
 }
-
 /* Efecto de Rotación y Zoom al pasar el mouse */
 .logo-container:hover {
     transform: rotate(360deg) scale(1.05);
@@ -61,17 +54,10 @@ body {
 }
 
 #logo-img {
-    /* 1. Que ocupe el 100% del contenedor circular */
-    width: 100% !important; 
-    height: 100% !important;
-    
-    /* 2. 'contain' asegura que NO se corte el texto del logo */
-    object-fit: contain !important; 
-
-    /* 3. Eliminamos el movimiento manual para ver el centro real */
-    transform: none !important; 
-    
-    transition: all 0.3s ease;
+    width: 100% !important; /* Que intente ocupar el ancho */
+    height: 100% !important; /* Que intente ocupar el alto */
+    object-fit: contain !important; /* Que se ajuste sin deformarse ni cortarse */
+    transform: none !important; /* Quitamos movimientos manuales previos */
 }
 .logo-glow {
     position: absolute;
