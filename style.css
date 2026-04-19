@@ -68,21 +68,17 @@ body {
 }
 
 #logo-img {
-    /* Reducimos el tamaño a uno más manejable, un 30% más grande que el contenedor */
-    /* Esto nos da margen para moverlo sin que se pixele, pero no lo hace gigante */
-    width: 130%; 
-    height: 130%;
+    /* 1. Forzamos un tamaño pequeño y controlado */
+    width: 110% !important; 
+    height: 110% !important;
     
-    /* Mantenemos object-fit: contain para asegurar que no se deforme */
-    object-fit: contain; 
-    border-radius: 50%;
+    /* 2. Aseguramos que se ajuste al círculo */
+    object-fit: cover !important; 
+    border-radius: 50% !important;
 
-    /* AJUSTE DE PRECISIÓN DEFINITIVO 🎯 */
-    /* translate(-15px, -8px): */
-    /* El primer número (-15px) mueve el logo a la IZQUIERDA horizontalmente. ↔️ */
-    /* El segundo número (-8px) mueve el logo hacia ARRIBA verticalmente. ↕️ */
-    /* Ajusta estos números px a px hasta que el logo esté centrado y completo. */
-    transform: translate(-15px, -8px); 
+    /* 3. Re-centramos con valores pequeños 🎯 */
+    /* Mueve el logo un poco a la izquierda para tapar el borde blanco */
+    transform: translate(-10px, -2px) !important; 
 
     transition: all 0.3s ease;
 }
