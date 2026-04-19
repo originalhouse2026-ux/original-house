@@ -11,36 +11,20 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    
-    /* 🎨 MEZCLA EXPLOSIVA: Negro, Verde Neón, Morado, Rojo Eléctrico y Blanco Brillante */
-    background: linear-gradient(-45deg, 
-        #000000, 
-        #114b1f, /* Verde neón profundo */
-        #2d0a4e, /* Morado neón */
-        #660000, /* Rojo eléctrico */
-        #222222  /* Blanco/Gris muy sutil para no cegar */
-    ) !important;
-    
-    /* 🚀 Esto es lo que permite que el color "fluya" */
-    background-size: 400% 400% !important;
-    
-    /* 🎬 Animación fluida */
-    animation: fondoFluido 15s ease infinite !important;
-    
     color: white;
     overflow-x: hidden;
+
+    /* 🎬 Animación de cambio de color total */
+    animation: cambioColorTotal 20s infinite; /* 20s total / 5 colores = 4s cada uno */
 }
 
-@keyframes fondoFluido {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+/* 👇 Aquí definimos cómo cambia todo el fondo 👇 */
+@keyframes cambioColorTotal {
+    0%, 100% { background-color: #051a0b; } /* Verde Neón Profundo 🟢 */
+    20% { background-color: #1a051a; }      /* Morado Neón 🟣 */
+    40% { background-color: #1a0000; }      /* Rojo Eléctrico 🔴 */
+    60% { background-color: #1a050d; }      /* Fucsia/Vibrante 💖 */
+    80% { background-color: #0a0a0a; }      /* Negro/Gris Profesional ⚪ */
 }
 
 /* =========================================
@@ -235,11 +219,10 @@ body {
 /* =========================================
    GRID DE PRODUCTOS
    ========================================= */
-.products-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    min-height: 60vh;
+.product-container { /* O el nombre de tu sección de productos */
+    background-color: #0a0a0a !important; /* Negro sólido para contraste */
+    border-top: 1px solid #333;
+    padding: 40px 0;
 }
 
 .products-grid {
