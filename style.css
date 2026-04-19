@@ -66,21 +66,20 @@ body {
     to { transform: rotate(360deg); }
 }
 
+/* 🎡 El logo solo gira, no hace nada más */
 #logo-img {
-    /* 1. Reducimos el tamaño para que sea más pequeño */
     width: 80% !important; 
     height: 80% !important;
-    
-    /* 2. Aseguramos que se mantenga centrado en su espacio */
     object-fit: contain !important; 
     display: block !important;
     margin: auto !important;
-
-    /* 3. Estabilizamos el eje de rotación */
     transform-origin: center center !important;
+    animation: girarLogo 12s linear infinite !important; /* Giro constante */
+}
 
-    /* 4. Tu animación de giro */
-    animation: girarLogo 12s linear infinite !important; 
+/* 🚫 Quitamos el temblor que le pusimos al logo antes */
+.logo-container:hover #logo-img {
+    animation: girarLogo 12s linear infinite !important; /* Sigue girando normal */
 }
 .logo-glow {
     position: absolute;
