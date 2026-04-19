@@ -97,19 +97,27 @@ body {
     50% { opacity: 0.6; transform: scale(1.1); }
 }
 
-/* Títulos de Marca */
+/* 🛠️ ELIMINAMOS CUALQUIER SOMBRA O GRADIENTE PULSANTE DEL TÍTULO 🛠️ */
 .brand-title {
-    font-family: 'Orbitron', monospace;
-    font-size: 2.5rem;
-    font-weight: 900;
-    background: linear-gradient(45deg, #00ff88, #FF69B4, #00ff88);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientShift 3s ease infinite;
-    text-shadow: 0 0 30px rgba(0,255,136,0.5);
-    margin-bottom: 0.5rem;
+    text-shadow: none !important;
+    animation: none !important;
+    background: linear-gradient(45deg, #00ff88, #FF69B4) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* 🛠️ EL EFECTO DE TEMBLOR (VIBRATION) DEL LOGO 🛠️ */
+@keyframes vibration {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    75% { transform: rotate(-1deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Aplicamos al logo al pasar el mouse */
+.logo-container:hover #logo-img {
+    animation: vibration 0.1s infinite !important;
+    cursor: pointer !important;
 }
 #titulo-imagen-web {
     display: block !important;
@@ -235,19 +243,32 @@ body {
     width: 100%;
 }
 .product-card {
-    background: rgba(0, 0, 0, 0.7) !important; /* Fondo oscuro para que el texto resalte 🕶️ */
-    backdrop-filter: blur(8px); /* Efecto de vidrio elegante */
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.8) !important; /* Fondo oscuro para que el texto resalte 🕶️ */
+    border-radius: 15px !important;
+    padding: 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
     
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 550px; /* ↕️ Damos más altura para que quepa toda la descripción */
-    transition: all 0.3s ease;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    
+    /* 🛠️ AUMENTAMOS LA ALTURA MÍNIMA A 650px PARA LAS DESCRIPCIONES LARGAS 🛠️ */
+    min-height: 650px !important; 
+    
+    /* 🛠️ ASEGURAMOS QUE NADA CORTE EL TEXTO 🛠️ */
+    overflow: visible !important; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
+/* 🟢 Aseguramos que el texto de descripción sea blanco y legible */
+.product-card .product-info p {
+    color: #ffffff !important;
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+    margin-top: 10px !important;
+    visibility: visible !important;
+    display: block !important;
+}
 /* 🟢 Aseguramos que los textos dentro sean blancos y legibles */
 .product-card h3, 
 .product-card p, 
@@ -390,17 +411,4 @@ body {
     bottom: 40px;
     right: 40px;
     z-index: 1000;
-}
-/* Definimos la vibración */
-@keyframes vibration {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(1deg); }
-    75% { transform: rotate(-1deg); }
-    100% { transform: rotate(0deg); }
-}
-
-/* Aplicamos al logo cuando pones el mouse encima 🖱️ */
-.logo-container:hover #logo-img {
-    animation: vibration 0.1s infinite !important; 
-    cursor: pointer;
 }
