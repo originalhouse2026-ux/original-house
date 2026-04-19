@@ -68,19 +68,21 @@ body {
 }
 
 #logo-img {
-    /* Mantenemos el tamaño exagerado para asegurar que llene el contenedor circular */
-    width: 250%; 
-    height: 250%;
+    /* Reducimos el tamaño a uno más manejable, un 30% más grande que el contenedor */
+    /* Esto nos da margen para moverlo sin que se pixele, pero no lo hace gigante */
+    width: 130%; 
+    height: 130%;
     
-    /* Mantenemos object-fit: contain para no deformar la imagen */
+    /* Mantenemos object-fit: contain para asegurar que no se deforme */
     object-fit: contain; 
     border-radius: 50%;
 
-    /* AJUSTE MAESTRO 🎯 */
-    /* El primer número (-3px) mueve el logo a la derecha. Ajusta este número */
-    /* hasta que el borde del dibujo blanco toque el límite de la circunferencia negra. */
-    /* El segundo número (-20px) mantiene el centrado vertical. */
-    transform: translate(-3px, -20px); 
+    /* AJUSTE DE PRECISIÓN DEFINITIVO 🎯 */
+    /* translate(-15px, -8px): */
+    /* El primer número (-15px) mueve el logo a la IZQUIERDA horizontalmente. ↔️ */
+    /* El segundo número (-8px) mueve el logo hacia ARRIBA verticalmente. ↕️ */
+    /* Ajusta estos números px a px hasta que el logo esté centrado y completo. */
+    transform: translate(-15px, -8px); 
 
     transition: all 0.3s ease;
 }
