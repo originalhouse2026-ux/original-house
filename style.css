@@ -37,12 +37,10 @@ body {
 }
 /* Contenedor Circular del Logo */
 .logo-container {
-    display: flex !important;
-    justify-content: center !important; /* Centra horizontalmente */
-    align-items: center !important;     /* Centra verticalmente */
-    overflow: hidden !important;
-    border-radius: 50% !important;
-    /* Asegúrate de que width y height sean iguales, ej: 100px */
+    border: none !important; /* Quita el círculo blanco */
+    background: transparent !important; /* Quita cualquier fondo */
+    box-shadow: none !important; /* Quita sombras externas si las hay */
+    /* Mantén el resto de propiedades como el width y height que ya tengas */
 }
 /* Efecto de Rotación y Zoom al pasar el mouse */
 .logo-container:hover {
@@ -105,16 +103,13 @@ body {
     text-shadow: 0 0 30px rgba(0,255,136,0.5);
     margin-bottom: 0.5rem;
 }
-/* Esto controlará específicamente la imagen que pusimos */
 #titulo-imagen-web {
     display: block !important;
-    margin: 0 auto !important;
-    width: 90% !important;
-    max-width: 450px !important; /* Aquí controlas el tamaño final */
+    margin: 40px auto 20px auto !important; /* Le damos aire arriba y abajo */
+    width: 95% !important;
+    max-width: 800px !important; /* Un tamaño grande pero equilibrado */
     height: auto !important;
-    
-    /* Le damos el brillo neón que combine con tu graffiti */
-    filter: drop-shadow(0 0 10px #2ecc71) drop-shadow(0 0 20px #8e44ad) !important;
+    filter: drop-shadow(0 0 15px #2ecc71) drop-shadow(0 0 25px #8e44ad) !important;
 }
 @keyframes gradientShift {
     0%, 100% { background-position: 0% 50%; }
