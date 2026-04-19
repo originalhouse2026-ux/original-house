@@ -353,3 +353,14 @@ body {
     right: 40px;
     z-index: 1000;
 }
+#titulo-imagen-web {
+    width: 85%; /* Se adapta al ancho del celular/pantalla */
+    max-width: 450px; /* 👈 Aquí es donde controlamos que no sea gigante */
+    height: auto; /* Mantiene la proporción para que no se estire */
+    display: block;
+    margin: 0 auto; /* Lo asegura en el centro */
+
+    /* Mantenemos tu efecto de neón 🟢🟣 */
+    filter: drop-shadow(0 0 8px #2ecc71) 
+            drop-shadow(0 0 15px #8e44ad);
+}
