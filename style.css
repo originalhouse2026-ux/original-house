@@ -8,10 +8,24 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
-    color: #ffffff;
-    min-height: 100vh;
+    
+    /* 🎨 MEZCLA DE COLORES: Negro, Verde, Morado, Rojo y Blanco */
+    background: linear-gradient(135deg, 
+        #000000, 
+        #0a2b16, /* Verde oscuro */
+        #1a0a2b, /* Morado oscuro */
+        #3d0000, /* Rojo profundo */
+        #1a1a1a  /* Un gris casi blanco para el toque sutil */
+    );
+    background-size: 400% 400%;
+    
+    /* 🎬 Animación un poco más lenta para mayor sutileza */
+    animation: fondoFluido 20s ease infinite;
+    
+    color: white;
     overflow-x: hidden;
 }
 
