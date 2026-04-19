@@ -61,10 +61,17 @@ body {
 }
 
 #logo-img {
-    width: 110% !important; 
-    height: 110% !important;
-    object-fit: cover !important;
-    transform: translate(-10px, -2px) !important;
+    /* 1. Que ocupe el 100% del contenedor circular */
+    width: 100% !important; 
+    height: 100% !important;
+    
+    /* 2. 'contain' asegura que NO se corte el texto del logo */
+    object-fit: contain !important; 
+
+    /* 3. Eliminamos el movimiento manual para ver el centro real */
+    transform: none !important; 
+    
+    transition: all 0.3s ease;
 }
 .logo-glow {
     position: absolute;
