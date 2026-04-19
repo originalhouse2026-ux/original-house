@@ -61,16 +61,24 @@ body {
 }
 
 #logo-img {
-    /* Forzamos a que la imagen sea un cuadrado para que el eje sea central */
-    width: 100% !important; 
-    height: 100% !important;
+    /* 1. Hacemos la imagen un 30% más grande que el círculo */
+    /* De esta forma, los bordes blancos/transparentes desiguales quedan fuera */
+    width: 130% !important; 
+    height: 130% !important;
     
-    /* 'cover' llena el espacio y centra el contenido de la foto */
+    /* 2. 'cover' asegura que la imagen llene todo el círculo negro */
     object-fit: cover !important; 
-    object-position: center !important; 
+    border-radius: 50% !important;
 
-    /* Aplicamos la animación */
+    /* 3. CENTRADO DEFINITIVO Y MÁGICO 🎯 */
+    /* Usamos márgenes automáticos para que Flexbox (del contenedor) */
+    /* empuje la imagen al centro perfecto, sin importar sus bordes desiguales. */
+    margin: auto !important; 
+
+    /* 4. Mantenemos tu animación favorita 🌀 */
     animation: girarLogo 12s linear infinite !important; 
+    
+    transition: all 0.3s ease;
 }
 .logo-glow {
     position: absolute;
