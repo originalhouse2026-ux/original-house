@@ -68,19 +68,19 @@ body {
 }
 
 #logo-img {
-    /* 1. Hacemos la imagen gigante para forzar el desborde */
-    /* De esta forma, el "aire" blanco de la derecha quedará FUERA del círculo */
-    width: 250%;       
+    /* Mantenemos el tamaño exagerado para asegurar que llene el contenedor circular */
+    width: 250%; 
     height: 250%;
     
-    /* 2. 'contain' asegura que la imagen no se estire de forma asimétrica */
+    /* Mantenemos object-fit: contain para no deformar la imagen */
     object-fit: contain; 
     border-radius: 50%;
-    
-    /* 3. MOVIMIENTO CLAVE 🎯 */
-    /* translate(-80px, -20px): Empuja la imagen 80 píxeles a la izquierda (eje X) ↔️ */
-    /* y 20 píxeles hacia arriba (eje Y) ↕️ */
-    transform: translate(-80px, -20px); 
+
+    /* AJUSTE MAESTRO 🎯 */
+    /* El primer número (-3px) mueve el logo a la derecha. Ajusta este número */
+    /* hasta que el borde del dibujo blanco toque el límite de la circunferencia negra. */
+    /* El segundo número (-20px) mantiene el centrado vertical. */
+    transform: translate(-3px, -20px); 
 
     transition: all 0.3s ease;
 }
