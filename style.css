@@ -105,7 +105,17 @@ body {
     text-shadow: 0 0 30px rgba(0,255,136,0.5);
     margin-bottom: 0.5rem;
 }
-
+/* Esto controlará específicamente la imagen que pusimos */
+#titulo-imagen-web {
+    display: block !important;
+    margin: 0 auto !important;
+    width: 90% !important;
+    max-width: 450px !important; /* Aquí controlas el tamaño final */
+    height: auto !important;
+    
+    /* Le damos el brillo neón que combine con tu graffiti */
+    filter: drop-shadow(0 0 10px #2ecc71) drop-shadow(0 0 20px #8e44ad) !important;
+}
 @keyframes gradientShift {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -352,15 +362,4 @@ body {
     bottom: 40px;
     right: 40px;
     z-index: 1000;
-}
-#titulo-imagen-web {
-    width: 85%; /* Se adapta al ancho del celular/pantalla */
-    max-width: 450px; /* 👈 Aquí es donde controlamos que no sea gigante */
-    height: auto; /* Mantiene la proporción para que no se estire */
-    display: block;
-    margin: 0 auto; /* Lo asegura en el centro */
-
-    /* Mantenemos tu efecto de neón 🟢🟣 */
-    filter: drop-shadow(0 0 8px #2ecc71) 
-            drop-shadow(0 0 15px #8e44ad);
 }
