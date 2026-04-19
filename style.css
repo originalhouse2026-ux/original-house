@@ -98,19 +98,22 @@ body {
 
 /* 🛠️ ELIMINAMOS CUALQUIER SOMBRA O GRADIENTE PULSANTE DEL TÍTULO 🛠️ */
 .brand-title {
-    text-shadow: none !important;
-    animation: none !important;
+    font-family: 'Orbitron', monospace;
+    font-size: 2.5rem;
+    font-weight: 900;
     background: linear-gradient(45deg, #00ff88, #FF69B4) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
+    text-shadow: none !important;
+    animation: none !important; /* Quieto por defecto */
+    cursor: pointer;
+    user-select: none;
 }
 
-/* 🛠️ EL EFECTO DE TEMBLOR (VIBRATION) DEL LOGO 🛠️ */
-@keyframes vibration {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(1deg); }
-    75% { transform: rotate(-1deg); }
-    100% { transform: rotate(0deg); }
+/* 📳 Cuando mantienes presionado el clic sobre el título */
+.brand-title:active {
+    display: inline-block; /* Necesario para que el transform funcione */
+    animation: vibration 0.1s infinite !important;
 }
 
 /* Aplicamos al logo al pasar el mouse */
