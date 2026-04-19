@@ -61,24 +61,20 @@ body {
 }
 
 #logo-img {
-    /* 1. Hacemos la imagen un 30% más grande que el círculo */
-    /* De esta forma, los bordes blancos/transparentes desiguales quedan fuera */
-    width: 130% !important; 
-    height: 130% !important;
+    /* 1. Reducimos el tamaño para que sea más pequeño */
+    width: 80% !important; 
+    height: 80% !important;
     
-    /* 2. 'cover' asegura que la imagen llene todo el círculo negro */
-    object-fit: cover !important; 
-    border-radius: 50% !important;
+    /* 2. Aseguramos que se mantenga centrado en su espacio */
+    object-fit: contain !important; 
+    display: block !important;
+    margin: auto !important;
 
-    /* 3. CENTRADO DEFINITIVO Y MÁGICO 🎯 */
-    /* Usamos márgenes automáticos para que Flexbox (del contenedor) */
-    /* empuje la imagen al centro perfecto, sin importar sus bordes desiguales. */
-    margin: auto !important; 
+    /* 3. Estabilizamos el eje de rotación */
+    transform-origin: center center !important;
 
-    /* 4. Mantenemos tu animación favorita 🌀 */
+    /* 4. Tu animación de giro */
     animation: girarLogo 12s linear infinite !important; 
-    
-    transition: all 0.3s ease;
 }
 .logo-glow {
     position: absolute;
