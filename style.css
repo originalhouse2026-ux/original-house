@@ -38,11 +38,12 @@ body {
 /* Contenedor Circular del Logo */
 .logo-container {
     display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    overflow: hidden !important; /* Esto recorta el exceso del logo para que siga siendo un círculo */
+    justify-content: center !important; /* Centra horizontalmente */
+    align-items: center !important;     /* Centra verticalmente */
+    overflow: hidden !important;
     border-radius: 50% !important;
-   }
+    /* Asegúrate de que width y height sean iguales, ej: 100px */
+}
 /* Efecto de Rotación y Zoom al pasar el mouse */
 .logo-container:hover {
     transform: rotate(360deg) scale(1.05);
@@ -53,18 +54,22 @@ body {
         inset -8px -8px 16px rgba(50,50,50,0.3);
 }
 
-/* 1. La receta del giro */
+/* 1. La receta del giro se mantiene igual */
 @keyframes girarLogo {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-/* 2. El elemento que usa la receta */
 #logo-img {
-    min-width: 110% !important; 
-    min-height: 110% !important;
+    /* Forzamos a que la imagen sea un cuadrado para que el eje sea central */
+    width: 100% !important; 
+    height: 100% !important;
+    
+    /* 'cover' llena el espacio y centra el contenido de la foto */
     object-fit: cover !important; 
-    /* Aquí conectamos con 'girarLogo' */
+    object-position: center !important; 
+
+    /* Aplicamos la animación */
     animation: girarLogo 12s linear infinite !important; 
 }
 .logo-glow {
