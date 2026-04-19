@@ -105,10 +105,14 @@ body {
 }
 #titulo-imagen-web {
     display: block !important;
-    margin: 40px auto 20px auto !important; /* Le damos aire arriba y abajo */
-    width: 95% !important;
-    max-width: 1000px !important; /* Un tamaño grande pero equilibrado */
+    margin: 20px auto !important; 
+    
+    /* Cambiamos la lógica: */
+    width: 90vw !important; /* Usa el 90% del ancho de la pantalla del dispositivo 📱 */
+    max-width: 1100px !important; /* Permite que crezca hasta este tope */
     height: auto !important;
+
+    /* Mantenemos tu efecto neón 🟢🟣 */
     filter: drop-shadow(0 0 15px #2ecc71) drop-shadow(0 0 25px #8e44ad) !important;
 }
 @keyframes gradientShift {
