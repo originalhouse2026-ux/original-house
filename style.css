@@ -107,7 +107,7 @@ body {
     display: block !important;
     margin: 40px auto 20px auto !important; /* Le damos aire arriba y abajo */
     width: 95% !important;
-    max-width: 950px !important; /* Un tamaño grande pero equilibrado */
+    max-width: 100px !important; /* Un tamaño grande pero equilibrado */
     height: auto !important;
     filter: drop-shadow(0 0 15px #2ecc71) drop-shadow(0 0 25px #8e44ad) !important;
 }
