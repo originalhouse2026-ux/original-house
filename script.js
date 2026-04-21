@@ -29,17 +29,20 @@ async function loadProducts() {
         loadingEl.style.display = 'none';
 
     } catch (error) {
+        console.error(error);
         loadingEl.style.display = 'none';
         errorEl.style.display = 'block';
     }
 }
 
+/* 🔥 PARSER CORREGIDO (SOPORTA COMAS EN TEXTO) */
 function parseCSV(csvText) {
     const lines = csvText.trim().split('\n');
-    const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
+
+    const headers = splitCSVLine(lines[0]);
 
     return lines.slice(1).map(line => {
-        const values = line.split(',');
+        const values = splitCSVLine(line);
         const product = {};
 
         headers.forEach((header, index) => {
@@ -57,8 +60,38 @@ function parseCSV(csvText) {
     });
 }
 
+/* 🔥 FUNCIÓN CLAVE (RESPETA COMILLAS Y COMAS) */
+function splitCSVLine(line) {
+    const result = [];
+    let current = '';
+    let insideQuotes = false;
+
+    for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+
+        if (char === '"') {
+            insideQuotes = !insideQuotes;
+        } else if (char === ',' && !insideQuotes) {
+            result.push(current);
+            current = '';
+        } else {
+            current += char;
+        }
+    }
+
+    result.push(current);
+
+    return result.map(v => v.replace(/^"|"$/g, '').trim());
+}
+
 function renderProducts(products) {
     const grid = document.getElementById('products-grid');
+
+    if (products.length === 0) {
+        grid.innerHTML = '<div class="no-products">No products found</div>';
+        return;
+    }
+
     grid.innerHTML = products.map(p => createProductCard(p)).join('');
 }
 
@@ -76,7 +109,7 @@ function createProductCard(product) {
 
         <div class="product-fabric">${product.fabric}</div>
 
-        <button class="whatsapp-btn" onclick="window.open('${whatsappUrl}')">
+        <button class="whatsapp-btn" onclick="window.open('${whatsappUrl}', '_blank')">
             Comprar por WhatsApp
         </button>
     </article>
