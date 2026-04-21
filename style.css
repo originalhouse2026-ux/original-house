@@ -277,21 +277,21 @@ body {
 }
 .product-info {
     margin-top: 15px !important;
+    display: flex !important;
+    flex-direction: column !important;
     flex-grow: 1 !important;
-    display: flex !important;           /* 🧱 Lo convertimos en contenedor flexible */
-    flex-direction: column !important;    /* ↕️ Apilamos el texto y el precio */
-    min-height: 0 !important;            /* 📏 Truco técnico: permite que el contenido interno fluya */
-}
-.product-card:hover {
-    transform: translateY(-15px) rotateX(5deg);
-    box-shadow: 
-        30px 30px 60px rgba(0,0,0,0.8),
-        -30px -30px 60px rgba(0,255,136,0.2),
-        inset 12px 12px 24px rgba(0,0,0,0.5),
-        inset -12px -12px 24px rgba(50,50,50,0.3);
-    border-image: linear-gradient(45deg, #00ff88, #FF69B4) 1;
+    height: auto !important;     /* 📏 Permite que la altura se adapte al contenido */
+    min-height: min-content !important; /* 🧱 Evita que colapse */
 }
 
+/* 📝 Forzamos al párrafo a expandirse y ser visible */
+.product-card .product-info p {
+    display: block !important;
+    visibility: visible !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin-bottom: 10px !important;
+}
 .product-image {
     max-height: 250px !important; /* 📏 Evita que la foto sea gigante */
     width: 100% !important;
