@@ -1,117 +1,183 @@
-const GOOGLE_SHEETS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRHh-u6rZPLRMNhaw2ILjUFgHULwrpkDogwQBREHx6fHIh7k_mduLn4DjftOkRbpAEY8lUrkajwaxQK/pub?output=csv';
-
-let allProducts = [];
-let filteredProducts = [];
-
-document.addEventListener('DOMContentLoaded', function() {
-    loadProducts();
-    setupFilters();
-    setupLogo();
-});
-
-async function loadProducts() {
-    const loadingEl = document.getElementById('loading');
-    const errorEl = document.getElementById('error');
-    const productsGrid = document.getElementById('products-grid');
-
-    try {
-        loadingEl.style.display = 'block';
-        errorEl.style.display = 'none';
-        productsGrid.innerHTML = '';
-
-        const response = await fetch(GOOGLE_SHEETS_CSV_URL);
-        const csvText = await response.text();
-
-        allProducts = parseCSV(csvText);
-        filteredProducts = [...allProducts];
-
-        renderProducts(filteredProducts);
-        loadingEl.style.display = 'none';
-
-    } catch (error) {
-        loadingEl.style.display = 'none';
-        errorEl.style.display = 'block';
-    }
+/* =========================================
+   RESET BASE (CORREGIDO)
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-function parseCSV(csvText) {
-    const lines = csvText.trim().split('\n');
-    const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
-
-    return lines.slice(1).map(line => {
-        const values = line.split(',');
-        const product = {};
-
-        headers.forEach((header, index) => {
-            product[header] = values[index] || '';
-        });
-
-        return {
-            name: product['NOMBRE'] || 'Sin nombre',
-            price: product['PRECIO'] || '0',
-            category: product['CATEGORÍA'] || 'Otros',
-            image: product['LINK_IMAGEN'] || '',
-            description: product['DESCRIPCIÓN'] || '',
-            fabric: '250g Catar Fabric'
-        };
-    });
+/* =========================================
+   BODY + FONDO ANIMADO
+   ========================================= */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    overflow-x: hidden;
+    animation: cambioColorTotal 20s infinite;
 }
 
-function renderProducts(products) {
-    const grid = document.getElementById('products-grid');
-    grid.innerHTML = products.map(p => createProductCard(p)).join('');
+@keyframes cambioColorTotal {
+    0%, 100% { background-color: #051a0b; }
+    20% { background-color: #1a051a; }
+    40% { background-color: #1a0000; }
+    60% { background-color: #1a050d; }
+    80% { background-color: #0a0a0a; }
 }
 
-function createProductCard(product) {
-    const whatsappUrl = `https://wa.me/573337318929?text=Quiero%20comprar%20${encodeURIComponent(product.name)}`;
-
-    return `
-    <article class="product-card">
-        <img src="${product.image}" class="product-image">
-        <div class="product-category">${product.category}</div>
-        <h3 class="product-name">${product.name}</h3>
-        <div class="product-price">$${product.price}</div>
-
-        <p class="product-description">${product.description}</p>
-
-        <div class="product-fabric">${product.fabric}</div>
-
-        <button class="whatsapp-btn" onclick="window.open('${whatsappUrl}')">
-            Comprar por WhatsApp
-        </button>
-    </article>
-    `;
+/* =========================================
+   HEADER
+   ========================================= */
+.header {
+    padding: 2rem 0;
+    background: transparent !important;
 }
 
-function setupFilters() {
-    const buttons = document.querySelectorAll('.filter-btn');
-
-    buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            buttons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filter = btn.dataset.filter;
-
-            if (filter === 'all') {
-                renderProducts(allProducts);
-            } else {
-                const filtered = allProducts.filter(p =>
-                    p.category.toLowerCase().includes(filter.toLowerCase())
-                );
-                renderProducts(filtered);
-            }
-        });
-    });
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-function setupLogo() {
-    const logo = document.getElementById('logo-container');
+.logo-container {
+    background: transparent !important;
+    box-shadow: none !important;
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
 
-    logo.addEventListener('click', () => {
-        logo.style.transform = 'scale(0.9)';
-        setTimeout(() => {
-            logo.style.transform = 'scale(1)';
-        }, 150);
-    });
+/* LOGO GIRO */
+#logo-img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    animation: girarLogo 12s linear infinite;
+}
+
+@keyframes girarLogo {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* EFECTO PRESIÓN */
+#logo-container:active {
+    transform: scale(0.88);
+    filter: brightness(0.8);
+}
+
+.brand-subtitle {
+    font-size: 1.1rem;
+    color: #00ff88;
+}
+
+/* =========================================
+   FILTROS
+   ========================================= */
+.filters-section {
+    padding: 2rem 0;
+}
+
+.filters-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: #111;
+    color: white;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background: #00ff88;
+    color: black;
+}
+
+/* =========================================
+   PRODUCTOS
+   ========================================= */
+.products-container {
+    padding: 40px 0;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    background: rgba(0,0,0,0.85);
+    padding: 20px;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    height: auto;
+    overflow: visible;
+}
+
+.product-image {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+.product-name {
+    font-size: 1.4rem;
+    margin-top: 10px;
+}
+
+.product-price {
+    font-size: 1.8rem;
+    color: #00ff88;
+}
+
+/* 🔥 DESCRIPCIÓN */
+.product-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-top: 10px;
+
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+
+    word-break: break-word;
+}
+
+/* TELA */
+.product-fabric {
+    color: #00ff88;
+    margin-top: 8px;
+}
+
+/* BOTÓN */
+.whatsapp-btn {
+    margin-top: auto;
+    padding: 15px;
+    background: #25D366;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+/* FLOAT */
+.whatsapp-float {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+}
+
+/* LOADING / ERROR */
+.loading, .error {
+    text-align: center;
+    padding: 20px;
 }
