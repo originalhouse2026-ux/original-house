@@ -252,8 +252,7 @@ body {
     flex-direction: column !important;
     justify-content: space-between !important;
     
-    /* 🛠️ AUMENTAMOS LA ALTURA MÍNIMA A 650px PARA LAS DESCRIPCIONES LARGAS 🛠️ */
-    min-height: 650px !important; 
+  height: auto !important;
     
     /* 🛠️ ASEGURAMOS QUE NADA CORTE EL TEXTO 🛠️ */
     overflow: visible !important; 
@@ -291,9 +290,9 @@ body {
 }
 
 .product-image {
-    max-height: 250px; /* Evita que imágenes muy grandes oculten la descripción */
-    width: 100%;
-    object-fit: cover;
+    max-height: 250px !important; /* 📏 Evita que la foto sea gigante */
+    width: 100% !important;
+    object-fit: cover !important;
 }
 .product-card:hover .product-image {
     filter: drop-shadow(0 20px 40px rgba(0,255,136,0.4));
