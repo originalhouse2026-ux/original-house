@@ -1,403 +1,161 @@
 /* =========================================
-   ESTILOS GENERALES Y BASE
+   RESET BASE (CORREGIDO)
    ========================================= */
 * {
-    margin: 0
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* =========================================
+   BODY + FONDO ANIMADO
+   ========================================= */
 body {
-    margin: 0;
-    padding: 0;
     font-family: 'Roboto', sans-serif;
     color: white;
     overflow-x: hidden;
-
-    /* 🎬 Animación de cambio de color total */
-    animation: cambioColorTotal 20s infinite; /* 20s total / 5 colores = 4s cada uno */
+    animation: cambioColorTotal 20s infinite;
 }
 
-/* 👇 Aquí definimos cómo cambia todo el fondo 👇 */
 @keyframes cambioColorTotal {
-    0%, 100% { background-color: #051a0b; } /* Verde Neón Profundo 🟢 */
-    20% { background-color: #1a051a; }      /* Morado Neón 🟣 */
-    40% { background-color: #1a0000; }      /* Rojo Eléctrico 🔴 */
-    60% { background-color: #1a050d; }      /* Fucsia/Vibrante 💖 */
-    80% { background-color: #0a0a0a; }      /* Negro/Gris Profesional ⚪ */
+    0%, 100% { background-color: #051a0b; }
+    20% { background-color: #1a051a; }
+    40% { background-color: #1a0000; }
+    60% { background-color: #1a050d; }
+    80% { background-color: #0a0a0a; }
 }
 
 /* =========================================
-   HEADER Y LOGO (IDENTIDAD VISUAL)
+   HEADER
    ========================================= */
 .header {
     padding: 2rem 0;
-   background: transparent !important; /* 👈 Agrega esta línea */
+    background: transparent !important;
 }
-   
 
 .header-container {
     display: flex;
     flex-direction: column;
-    align-items: center;    /* ↔️ Centra el logo y los títulos */
+    align-items: center;
     text-align: center;
-    width: 100%;
-}
-/* Contenedor Circular del Logo */
-.logo-container {
-    border: none !important; /* Quita el círculo blanco */
-    background: transparent !important; /* Quita cualquier fondo */
-    box-shadow: none !important; /* Quita sombras externas si las hay */
-    /* Mantén el resto de propiedades como el width y height que ya tengas */
-}
-/* Efecto de Rotación y Zoom al pasar el mouse */
-.logo-container:hover {
-    transform: rotate(360deg) scale(1.05);
-    box-shadow: 
-        20px 20px 40px rgba(0,0,0,0.7),
-        -20px -20px 40px rgba(76, 175, 80, 0.1),
-        inset 8px 8px 16px rgba(0,0,0,0.5),
-        inset -8px -8px 16px rgba(50,50,50,0.3);
 }
 
-/* 1. La receta del giro se mantiene igual */
+.logo-container {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+#logo-img {
+    width: 80% !important;
+    height: 80% !important;
+    object-fit: contain !important;
+    animation: girarLogo 12s linear infinite !important;
+}
+
 @keyframes girarLogo {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-/* 🎡 El logo gira siempre por defecto */
-#logo-img {
-    width: 80% !important; 
-    height: 80% !important;
-    object-fit: contain !important; 
-    display: block !important;
-    margin: auto !important;
-    transform-origin: center center !important;
-    animation: girarLogo 12s linear infinite !important; /* Giro constante */
-}
-
-/* ✨ Al pasar el mouse, solo mantenemos el giro y cambiamos el cursor */
-.logo-container:hover #logo-img {
-    animation: girarLogo 12s linear infinite !important; 
-    cursor: pointer !important;
-}
-.logo-glow {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,255,136,0.3) 0%, transparent 70%);
-    animation: logoPulse 2s infinite;
-    pointer-events: none;
-}
-
-@keyframes logoPulse {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.1); }
-}
-
-/* 🛠️ ELIMINAMOS CUALQUIER SOMBRA O GRADIENTE PULSANTE DEL TÍTULO 🛠️ */
 .brand-title {
     font-family: 'Orbitron', monospace;
     font-size: 2.5rem;
     font-weight: 900;
-    background: linear-gradient(45deg, #00ff88, #FF69B4) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    text-shadow: none !important;
-    animation: none !important; /* Quieto por defecto */
-    cursor: pointer;
-    user-select: none;
-}
-
-/* 📳 Cuando mantienes presionado el clic sobre el título */
-.brand-title:active {
-    display: inline-block; /* Necesario para que el transform funcione */
-    animation: vibration 0.1s infinite !important;
-}
-
-
-
-#titulo-imagen-web {
-    display: block !important;
-    margin: 20px auto !important; 
-    
-    /* Cambiamos la lógica: */
-    width: 90vw !important; /* Usa el 90% del ancho de la pantalla del dispositivo 📱 */
-    max-width: 1100px !important; /* Permite que crezca hasta este tope */
-    height: auto !important;
-   
-
-    /* Mantenemos tu efecto neón 🟢🟣 */
-    filter: drop-shadow(0 0 15px #2ecc71) drop-shadow(0 0 25px #8e44ad) !important;
-}
-@keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-
-.brand-subtitle {
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: #00ff88;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(0,255,136,0.5);
+    background: linear-gradient(45deg, #00ff88, #FF69B4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* =========================================
-   FILTROS Y NAVEGACIÓN
-   ========================================= */
-.filters-section {
-    padding: 2rem 0;
-    background: transparent !important;
-    backdrop-filter: blur(10px);
-}
-
-.filters-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    padding: 12px 24px;
-    background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
-    border: none;
-    border-radius: 50px;
-    color: #ffffff;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 
-        8px 8px 16px rgba(0,0,0,0.6),
-        -8px -8px 16px rgba(30,30,30,0.3),
-        inset 4px 4px 8px rgba(0,0,0,0.4),
-        inset -4px -4px 8px rgba(40,40,40,0.2);
-    position: relative;
-    overflow: hidden;
-}
-
-.filter-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0,255,136,0.3), transparent);
-    transition: left 0.5s;
-}
-
-.filter-btn:hover::before {
-    left: 100%;
-}
-
-.filter-btn:hover {
-    box-shadow: 
-        12px 12px 24px rgba(0,0,0,0.7),
-        -12px -12px 24px rgba(0,255,136,0.2),
-        inset 6px 6px 12px rgba(0,0,0,0.5),
-        inset -6px -6px 12px rgba(50,50,50,0.3);
-    transform: translateY(-2px);
-    color: #00ff88;
-}
-
-.filter-btn.active {
-    background: linear-gradient(145deg, #00ff88, #00cc6a);
-    box-shadow: 
-        12px 12px 24px rgba(0,255,136,0.4),
-        -12px -12px 24px rgba(0,180,50,0.3),
-        inset 6px 6px 12px rgba(0,200,100,0.3),
-        inset -6px -6px 12px rgba(0,150,70,0.2);
-    color: #121212;
-}
-
-/* =========================================
-   GRID DE PRODUCTOS
+   PRODUCTOS GRID
    ========================================= */
 .product-container {
-    background: transparent !important; /* 👈 Cambia el color por transparencia */
-    border-top: 1px solid rgba(255,255,255,0.1); 
+    background: transparent !important;
     padding: 40px 0;
 }
+
 .products-grid {
     display: grid !important;
-    /* Esto fuerza las 3 columnas en PC y 1 en celular 📱 */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
     gap: 2rem;
     padding: 20px;
-    width: 100%;
 }
+
+/* =========================================
+   PRODUCT CARD (FIX PRINCIPAL)
+   ========================================= */
 .product-card {
-    background: rgba(0, 0, 0, 0.8) !important; /* Fondo oscuro para que el texto resalte 🕶️ */
-    border-radius: 15px !important;
-    padding: 20px !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    
+    background: rgba(0, 0, 0, 0.85) !important;
+    border-radius: 15px;
+    padding: 20px;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
-    
-  height: auto !important;
-    
-    /* 🛠️ ASEGURAMOS QUE NADA CORTE EL TEXTO 🛠️ */
-    overflow: visible !important; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
 }
 
-.product-card .product-info p {
-    color: #ffffff !important;
-    font-size: 0.9rem !important;
-    line-height: 1.5 !important;
-    margin-top: 10px !important;
-    margin-bottom: auto !important; /* 🚀 Esto empuja el botón hacia abajo y libera el texto */
-    display: block !important;
-    visibility: visible !important;
-}
-/* 🟢 Aseguramos que los textos dentro sean blancos y legibles */
-.product-card h3, 
-.product-card p, 
-.product-card span {
-    color: #ffffff !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-}
+/* INFO CONTENEDOR */
 .product-info {
-    margin-top: 15px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    flex-grow: 1 !important;
-    height: auto !important;     /* 📏 Permite que la altura se adapte al contenido */
-    min-height: min-content !important; /* 🧱 Evita que colapse */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
 }
 
-
-.product-image {
-    max-height: 250px !important; /* 📏 Evita que la foto sea gigante */
-    width: 100% !important;
-    object-fit: cover !important;
-}
-.product-card:hover .product-image {
-    filter: drop-shadow(0 20px 40px rgba(0,255,136,0.4));
-    transform: scale(1.05);
-}
-
-.product-category {
-    color: #FF69B4;
+/* DESCRIPCIÓN 🔥 SOLUCIÓN */
+.product-card .product-info p {
     font-size: 0.9rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 10px rgba(255,105,180,0.5);
+    line-height: 1.5;
+    margin: 10px 0;
+
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
+/* TEXTOS */
 .product-name {
-    font-family: 'Orbitron', monospace;
     font-size: 1.6rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: #ffffff;
-    line-height: 1.3;
+    font-weight: bold;
 }
 
 .product-price {
     font-size: 2rem;
     font-weight: 900;
-    background: linear-gradient(45deg, #00ff88, #FF69B4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 0 20px rgba(0,255,136,0.5);
-}
-
-.product-fabric {
     color: #00ff88;
-    font-size: 0.95rem;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 0 10px rgba(0,255,136,0.3);
 }
 
-/* =========================================
-   BOTONES Y UTILIDADES
-   ========================================= */
+/* IMAGEN */
+.product-image {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+/* BOTÓN WHATSAPP */
 .whatsapp-btn {
-    width: 100%;
-    padding: 16px;
-    background: #25D366 !important;
+    margin-top: auto; /* 🔥 mantiene botón abajo SIN romper texto */
+    padding: 15px;
+    background: #25D366;
+    border-radius: 12px;
     border: none;
-    border-radius: 15px;
-    color: #ffffff;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    color: white;
+    font-weight: bold;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 
-    10px 10px 20px rgba(37, 211, 102, 0.3),
-    -10px -10px 20px rgba(18, 140, 126, 0.2),
-    inset 5px 5px 10px rgba(255, 255, 255, 0.2),
-    inset -5px -5px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
 }
 
-.whatsapp-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.5s;
-}
-
-.whatsapp-btn:hover::before {
-    left: 100%;
-}
-
-.whatsapp-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 
-        15px 15px 30px rgba(255,105,180,0.6),
-        -15px -15px 30px rgba(255,20,147,0.4),
-        inset 8px 8px 16px rgba(255,100,160,0.4),
-        inset -8px -8px 16px rgba(255,50,130,0.3);
-}
-
-/* Loading & Error */
-.loading {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #00ff88;
-    padding: 4rem;
-    text-shadow: 0 0 10px rgba(0,255,136,0.5);
-}
-
-.error {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #ff4444;
-    padding: 4rem;
-}
-
-/* WhatsApp Float */
+/* FLOAT */
 .whatsapp-float {
     position: fixed;
-    width: 60px;
-    height: 60px;
     bottom: 40px;
     right: 40px;
-    z-index: 1000;
 }
