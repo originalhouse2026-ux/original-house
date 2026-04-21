@@ -259,14 +259,14 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-/* 🟢 Aseguramos que el texto de descripción sea blanco y legible */
 .product-card .product-info p {
     color: #ffffff !important;
     font-size: 0.9rem !important;
     line-height: 1.5 !important;
     margin-top: 10px !important;
-    visibility: visible !important;
+    margin-bottom: auto !important; /* 🚀 Esto empuja el botón hacia abajo y libera el texto */
     display: block !important;
+    visibility: visible !important;
 }
 /* 🟢 Aseguramos que los textos dentro sean blancos y legibles */
 .product-card h3, 
