@@ -1,161 +1,117 @@
-/* =========================================
-   RESET BASE (CORREGIDO)
-   ========================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+const GOOGLE_SHEETS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRHh-u6rZPLRMNhaw2ILjUFgHULwrpkDogwQBREHx6fHIh7k_mduLn4DjftOkRbpAEY8lUrkajwaxQK/pub?output=csv';
+
+let allProducts = [];
+let filteredProducts = [];
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadProducts();
+    setupFilters();
+    setupLogo();
+});
+
+async function loadProducts() {
+    const loadingEl = document.getElementById('loading');
+    const errorEl = document.getElementById('error');
+    const productsGrid = document.getElementById('products-grid');
+
+    try {
+        loadingEl.style.display = 'block';
+        errorEl.style.display = 'none';
+        productsGrid.innerHTML = '';
+
+        const response = await fetch(GOOGLE_SHEETS_CSV_URL);
+        const csvText = await response.text();
+
+        allProducts = parseCSV(csvText);
+        filteredProducts = [...allProducts];
+
+        renderProducts(filteredProducts);
+        loadingEl.style.display = 'none';
+
+    } catch (error) {
+        loadingEl.style.display = 'none';
+        errorEl.style.display = 'block';
+    }
 }
 
-/* =========================================
-   BODY + FONDO ANIMADO
-   ========================================= */
-body {
-    font-family: 'Roboto', sans-serif;
-    color: white;
-    overflow-x: hidden;
-    animation: cambioColorTotal 20s infinite;
+function parseCSV(csvText) {
+    const lines = csvText.trim().split('\n');
+    const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
+
+    return lines.slice(1).map(line => {
+        const values = line.split(',');
+        const product = {};
+
+        headers.forEach((header, index) => {
+            product[header] = values[index] || '';
+        });
+
+        return {
+            name: product['NOMBRE'] || 'Sin nombre',
+            price: product['PRECIO'] || '0',
+            category: product['CATEGORÍA'] || 'Otros',
+            image: product['LINK_IMAGEN'] || '',
+            description: product['DESCRIPCIÓN'] || '',
+            fabric: '250g Catar Fabric'
+        };
+    });
 }
 
-@keyframes cambioColorTotal {
-    0%, 100% { background-color: #051a0b; }
-    20% { background-color: #1a051a; }
-    40% { background-color: #1a0000; }
-    60% { background-color: #1a050d; }
-    80% { background-color: #0a0a0a; }
+function renderProducts(products) {
+    const grid = document.getElementById('products-grid');
+    grid.innerHTML = products.map(p => createProductCard(p)).join('');
 }
 
-/* =========================================
-   HEADER
-   ========================================= */
-.header {
-    padding: 2rem 0;
-    background: transparent !important;
+function createProductCard(product) {
+    const whatsappUrl = `https://wa.me/573337318929?text=Quiero%20comprar%20${encodeURIComponent(product.name)}`;
+
+    return `
+    <article class="product-card">
+        <img src="${product.image}" class="product-image">
+        <div class="product-category">${product.category}</div>
+        <h3 class="product-name">${product.name}</h3>
+        <div class="product-price">$${product.price}</div>
+
+        <p class="product-description">${product.description}</p>
+
+        <div class="product-fabric">${product.fabric}</div>
+
+        <button class="whatsapp-btn" onclick="window.open('${whatsappUrl}')">
+            Comprar por WhatsApp
+        </button>
+    </article>
+    `;
 }
 
-.header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+function setupFilters() {
+    const buttons = document.querySelectorAll('.filter-btn');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.dataset.filter;
+
+            if (filter === 'all') {
+                renderProducts(allProducts);
+            } else {
+                const filtered = allProducts.filter(p =>
+                    p.category.toLowerCase().includes(filter.toLowerCase())
+                );
+                renderProducts(filtered);
+            }
+        });
+    });
 }
 
-.logo-container {
-    border: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
-}
+function setupLogo() {
+    const logo = document.getElementById('logo-container');
 
-#logo-img {
-    width: 80% !important;
-    height: 80% !important;
-    object-fit: contain !important;
-    animation: girarLogo 12s linear infinite !important;
-}
-
-@keyframes girarLogo {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.brand-title {
-    font-family: 'Orbitron', monospace;
-    font-size: 2.5rem;
-    font-weight: 900;
-    background: linear-gradient(45deg, #00ff88, #FF69B4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* =========================================
-   PRODUCTOS GRID
-   ========================================= */
-.product-container {
-    background: transparent !important;
-    padding: 40px 0;
-}
-
-.products-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
-    gap: 2rem;
-    padding: 20px;
-}
-
-/* =========================================
-   PRODUCT CARD (FIX PRINCIPAL)
-   ========================================= */
-.product-card {
-    background: rgba(0, 0, 0, 0.85) !important;
-    border-radius: 15px;
-    padding: 20px;
-    display: flex !important;
-    flex-direction: column !important;
-
-    height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
-}
-
-/* INFO CONTENEDOR */
-.product-info {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-
-    height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
-}
-
-/* DESCRIPCIÓN 🔥 SOLUCIÓN */
-.product-card .product-info p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin: 10px 0;
-
-    white-space: normal !important;
-    overflow: visible !important;
-    text-overflow: unset !important;
-
-    word-break: break-word;
-    overflow-wrap: anywhere;
-}
-
-/* TEXTOS */
-.product-name {
-    font-size: 1.6rem;
-    font-weight: bold;
-}
-
-.product-price {
-    font-size: 2rem;
-    font-weight: 900;
-    color: #00ff88;
-}
-
-/* IMAGEN */
-.product-image {
-    width: 100%;
-    max-height: 250px;
-    object-fit: cover;
-}
-
-/* BOTÓN WHATSAPP */
-.whatsapp-btn {
-    margin-top: auto; /* 🔥 mantiene botón abajo SIN romper texto */
-    padding: 15px;
-    background: #25D366;
-    border-radius: 12px;
-    border: none;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* FLOAT */
-.whatsapp-float {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
+    logo.addEventListener('click', () => {
+        logo.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+            logo.style.transform = 'scale(1)';
+        }, 150);
+    });
 }
