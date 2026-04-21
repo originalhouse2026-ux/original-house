@@ -66,7 +66,7 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* 🎡 El logo solo gira, no hace nada más */
+/* 🎡 El logo gira siempre por defecto */
 #logo-img {
     width: 80% !important; 
     height: 80% !important;
@@ -77,9 +77,10 @@ body {
     animation: girarLogo 12s linear infinite !important; /* Giro constante */
 }
 
-/* 🚫 Quitamos el temblor que le pusimos al logo antes */
+/* ✨ Al pasar el mouse, solo mantenemos el giro y cambiamos el cursor */
 .logo-container:hover #logo-img {
-    animation: girarLogo 12s linear infinite !important; /* Sigue girando normal */
+    animation: girarLogo 12s linear infinite !important; 
+    cursor: pointer !important;
 }
 .logo-glow {
     position: absolute;
@@ -116,11 +117,8 @@ body {
     animation: vibration 0.1s infinite !important;
 }
 
-/* Aplicamos al logo al pasar el mouse */
-.logo-container:hover #logo-img {
-    animation: vibration 0.1s infinite !important;
-    cursor: pointer !important;
-}
+
+
 #titulo-imagen-web {
     display: block !important;
     margin: 20px auto !important; 
