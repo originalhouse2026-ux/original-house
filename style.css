@@ -1,105 +1,186 @@
+/* =========================================
+   RESET BASE
+   ========================================= */
 * {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* =========================================
+   BODY
+   ========================================= */
 body {
-    font-family: 'Roboto';
-    color:white;
-    background:#050505;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    overflow-x: hidden;
+    background: #050505;
 }
 
-/* HEADER */
+/* =========================================
+   HEADER
+   ========================================= */
 .header {
-    text-align:center;
-    padding:30px;
+    padding: 2rem 0;
+    text-align: center;
 }
 
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================================
+   LOGO
+   ========================================= */
 .logo-container {
-    width:120px;
-    margin:auto;
-    transition:0.2s;
+    width: 120px;
+    margin-bottom: 10px;
+    transition: transform 0.15s ease;
 }
 
 #logo-img {
-    width:100%;
-    animation: spin 10s linear infinite;
+    width: 100%;
+    animation: girarLogo 12s linear infinite;
 }
 
-@keyframes spin {
-    from {transform:rotate(0)}
-    to {transform:rotate(360deg)}
+@keyframes girarLogo {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
+/* efecto presión */
 #logo-container:active {
-    transform:scale(0.85);
+    transform: scale(0.88);
 }
 
+/* =========================================
+   🔥 TITULO (CORREGIDO Y FUNCIONAL)
+   ========================================= */
 #titulo-imagen-web {
-    display: block !important;
-    margin: 20px auto !important;
+    display: block;
+    margin: 20px auto;
 
-    width: 55vw !important;        /* 🔥 más pequeño */
-    max-width: 650px !important;   /* 🔥 límite */
+    width: 50vw;        /* 🔥 tamaño real más pequeño */
+    max-width: 600px;   /* 🔥 límite */
 
-    height: auto !important;
-
-    filter: drop-shadow(0 0 15px #2ecc71)
-            drop-shadow(0 0 25px #8e44ad) !important;
+    height: auto;
 }
 
-/* GRID */
+/* =========================================
+   SUBTITULO
+   ========================================= */
+.brand-subtitle {
+    font-size: 1rem;
+    color: #00ff88;
+    margin-top: 10px;
+}
+
+/* =========================================
+   FILTROS
+   ========================================= */
+.filters-section {
+    padding: 20px 0;
+}
+
+.filters-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    background: #111;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background: #00ff88;
+    color: black;
+}
+
+/* =========================================
+   PRODUCTOS
+   ========================================= */
 .products-grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-    padding:20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
 .product-card {
-    background:black;
-    padding:20px;
-    border-radius:15px;
+    background: rgba(0,0,0,0.9);
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
+/* imagen */
 .product-image {
-    width:100%;
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
 }
 
-.price {
-    color:#00ff88;
-    font-size:22px;
+/* nombre */
+.product-name {
+    font-size: 1.3rem;
+    margin-top: 10px;
 }
 
-/* 🔥 DESCRIPCIÓN */
-.desc {
-    margin-top:10px;
-    line-height:1.5;
+/* precio */
+.product-price {
+    font-size: 1.8rem;
+    color: #00ff88;
 }
 
-/* FABRIC */
-.fabric {
-    color:#00ff88;
-    margin-top:10px;
+/* 🔥 descripción */
+.product-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-top: 10px;
+    word-break: break-word;
 }
 
-button {
-    margin-top:20px;
-    padding:10px;
-    background:#25D366;
-    border:none;
-    color:white;
-    border-radius:10px;
-    width:100%;
+/* tela */
+.product-fabric {
+    color: #00ff88;
+    margin-top: 10px;
 }
 
-/* FLOAT */
+/* botón */
+.whatsapp-btn {
+    margin-top: auto;
+    padding: 15px;
+    background: #25D366;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+/* =========================================
+   WHATSAPP FLOAT
+   ========================================= */
 .whatsapp-float {
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25D366;
-    padding:15px;
-    border-radius:50%;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #25D366;
+    padding: 15px;
+    border-radius: 50%;
+}
+
+/* =========================================
+   LOADING / ERROR
+   ========================================= */
+.loading, .error {
+    text-align: center;
+    padding: 20px;
 }
