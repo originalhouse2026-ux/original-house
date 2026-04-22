@@ -1,28 +1,100 @@
-/* RESET */
+/* =========================================
+   RESET
+========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* BODY */
+/* =========================================
+   🌈 FONDO ANIMADO ORIGINAL HOUSE
+========================================= */
 body {
     font-family: 'Roboto', sans-serif;
-    background: #050505;
     color: white;
+    overflow-x: hidden;
+
+    background: linear-gradient(135deg, #050505, #00ff88, #ff00ff);
+    background-size: 400% 400%;
+
+    animation: fondoNeon 16s ease infinite;
 }
 
-/* HEADER */
+/* animación suave */
+@keyframes fondoNeon {
+    0% {
+        background: linear-gradient(135deg, #050505, #00ff88, #ff00ff);
+    }
+    25% {
+        background: linear-gradient(135deg, #0a0a0a, #ff0040, #8e44ad);
+    }
+    50% {
+        background: linear-gradient(135deg, #111111, #ffffff, #00ff88);
+    }
+    75% {
+        background: linear-gradient(135deg, #0a0a0a, #ff00ff, #ff0040);
+    }
+    100% {
+        background: linear-gradient(135deg, #050505, #00ff88, #ff00ff);
+    }
+}
+
+/* =========================================
+   ✨ BORDE NEÓN
+========================================= */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    border: 2px solid rgba(255,255,200,0.2);
+
+    box-shadow:
+        0 0 10px rgba(255,255,180,0.4),
+        0 0 25px rgba(255,255,180,0.3),
+        0 0 60px rgba(255,255,180,0.2);
+
+    animation: neonBorde 4s ease-in-out infinite alternate;
+}
+
+@keyframes neonBorde {
+    0% {
+        box-shadow:
+            0 0 5px rgba(255,255,180,0.2),
+            0 0 15px rgba(255,255,180,0.2),
+            0 0 30px rgba(255,255,180,0.1);
+    }
+    100% {
+        box-shadow:
+            0 0 15px rgba(255,255,180,0.5),
+            0 0 40px rgba(255,255,180,0.4),
+            0 0 80px rgba(255,255,180,0.3);
+    }
+}
+
+/* =========================================
+   HEADER
+========================================= */
 .header {
     text-align: center;
     padding: 40px 0;
 }
 
-/* LOGO */
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================================
+   LOGO
+========================================= */
 .logo-container {
     width: 350px;
     max-width: 90%;
-    margin: 0 auto 20px;
+    margin-bottom: 20px;
 }
 
 #logo-img {
@@ -35,7 +107,9 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* TITULO */
+/* =========================================
+   TITULO
+========================================= */
 #titulo-imagen-web {
     width: 65vw;
     max-width: 800px;
@@ -43,13 +117,17 @@ body {
     display: block;
 }
 
-/* SUBTITULO */
+/* =========================================
+   SUBTITULO
+========================================= */
 .brand-subtitle {
     color: #00ff88;
     margin-top: 10px;
 }
 
-/* FILTROS */
+/* =========================================
+   FILTROS
+========================================= */
 .filters-container {
     display: flex;
     justify-content: center;
@@ -62,6 +140,11 @@ body {
     background: #111;
     border-radius: 30px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-btn:hover {
+    background: #222;
 }
 
 .filter-btn.active {
@@ -69,7 +152,9 @@ body {
     color: black;
 }
 
-/* GRID */
+/* =========================================
+   PRODUCTOS GRID
+========================================= */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -77,19 +162,28 @@ body {
     padding: 20px;
 }
 
-/* CARD */
+/* =========================================
+   PRODUCT CARD
+========================================= */
 .product-card {
-    background: #000;
+    background: rgba(0,0,0,0.85);
     padding: 20px;
     border-radius: 15px;
+    backdrop-filter: blur(4px);
+    transition: transform 0.3s ease;
 }
 
-/* IMG */
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+/* imagen */
 .product-image {
     width: 100%;
+    border-radius: 10px;
 }
 
-/* TEXTO */
+/* textos */
 .product-name {
     margin-top: 10px;
 }
@@ -101,13 +195,14 @@ body {
 
 .product-description {
     margin-top: 10px;
+    line-height: 1.5;
 }
 
 .product-fabric {
     color: #00ff88;
 }
 
-/* BOTÓN */
+/* botón */
 .whatsapp-btn {
     margin-top: 15px;
     padding: 12px;
@@ -116,9 +211,16 @@ body {
     border-radius: 10px;
     color: white;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-/* 🔥 WHATSAPP SOLO ICONO */
+.whatsapp-btn:hover {
+    transform: scale(1.05);
+}
+
+/* =========================================
+   WHATSAPP ICONO (SIN FONDO)
+========================================= */
 .whatsapp-float {
     position: fixed;
     bottom: 30px;
@@ -135,4 +237,13 @@ body {
 .whatsapp-float:hover svg {
     transform: scale(1.1);
     filter: drop-shadow(0 0 10px #25D366);
+}
+
+/* =========================================
+   LOADING / ERROR
+========================================= */
+.loading,
+.error {
+    text-align: center;
+    padding: 20px;
 }
