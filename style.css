@@ -1,44 +1,28 @@
-/* =========================================
-   RESET BASE
-========================================= */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* =========================================
-   BODY
-========================================= */
+/* BODY */
 body {
     font-family: 'Roboto', sans-serif;
-    color: white;
     background: #050505;
-    overflow-x: hidden;
+    color: white;
 }
 
-/* =========================================
-   HEADER
-========================================= */
+/* HEADER */
 .header {
-    padding: 2rem 0;
     text-align: center;
+    padding: 40px 0;
 }
 
-.header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* =========================================
-   LOGO (GRANDE + GIRO)
-========================================= */
+/* LOGO */
 .logo-container {
-    width: 420px; /* 🔥 tamaño grande */
+    width: 350px;
     max-width: 90%;
-    margin-bottom: 20px;
-    transition: transform 0.15s ease;
+    margin: 0 auto 20px;
 }
 
 #logo-img {
@@ -47,64 +31,37 @@ body {
 }
 
 @keyframes girarLogo {
-    from { transform: rotate(0deg); }
+    from { transform: rotate(0); }
     to { transform: rotate(360deg); }
 }
 
-/* efecto presión */
-#logo-container:active {
-    transform: scale(0.9);
-}
-
-/* =========================================
-   TITULO (EQUILIBRADO)
-========================================= */
+/* TITULO */
 #titulo-imagen-web {
-    display: block;
-    margin: 20px auto;
-
     width: 65vw;
     max-width: 800px;
-
-    height: auto;
-
-    filter: drop-shadow(0 0 15px #2ecc71)
-            drop-shadow(0 0 25px #8e44ad);
+    margin: 20px auto;
+    display: block;
 }
 
-/* =========================================
-   SUBTITULO
-========================================= */
+/* SUBTITULO */
 .brand-subtitle {
-    font-size: 1rem;
     color: #00ff88;
     margin-top: 10px;
 }
 
-/* =========================================
-   FILTROS
-========================================= */
-.filters-section {
-    padding: 20px 0;
-}
-
+/* FILTROS */
 .filters-container {
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin: 20px 0;
 }
 
 .filter-btn {
     padding: 10px 20px;
     background: #111;
-    border-radius: 50px;
-    color: white;
+    border-radius: 30px;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.filter-btn:hover {
-    background: #222;
 }
 
 .filter-btn.active {
@@ -112,9 +69,7 @@ body {
     color: black;
 }
 
-/* =========================================
-   PRODUCTOS GRID
-========================================= */
+/* GRID */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -122,116 +77,62 @@ body {
     padding: 20px;
 }
 
-/* =========================================
-   PRODUCT CARD
-========================================= */
+/* CARD */
 .product-card {
-    background: rgba(0,0,0,0.9);
+    background: #000;
     padding: 20px;
     border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease;
 }
 
-.product-card:hover {
-    transform: translateY(-5px);
-}
-
-/* imagen */
+/* IMG */
 .product-image {
     width: 100%;
-    max-height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
 }
 
-/* categoría */
-.product-category {
-    font-size: 0.8rem;
-    color: #ff69b4;
-    margin-top: 10px;
-}
-
-/* nombre */
+/* TEXTO */
 .product-name {
-    font-size: 1.3rem;
-    margin-top: 5px;
-}
-
-/* precio */
-.product-price {
-    font-size: 1.8rem;
-    color: #00ff88;
-    margin-top: 5px;
-}
-
-/* descripción */
-.product-description {
-    font-size: 0.95rem;
-    line-height: 1.5;
     margin-top: 10px;
-    word-break: break-word;
 }
 
-/* tela */
+.product-price {
+    color: #00ff88;
+    font-size: 22px;
+}
+
+.product-description {
+    margin-top: 10px;
+}
+
 .product-fabric {
     color: #00ff88;
-    margin-top: 10px;
 }
 
-/* botón */
+/* BOTÓN */
 .whatsapp-btn {
-    margin-top: auto;
-    padding: 15px;
+    margin-top: 15px;
+    padding: 12px;
     background: #25D366;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     color: white;
-    font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.whatsapp-btn:hover {
-    transform: scale(1.05);
-}
-
-/* =========================================
-   BOTÓN WHATSAPP FLOTANTE (CORREGIDO)
-========================================= */
+/* 🔥 WHATSAPP SOLO ICONO */
 .whatsapp-float {
     position: fixed;
     bottom: 30px;
     right: 30px;
-
-    width: 65px;
-    height: 65px;
-
-    background: #25D366;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    cursor: pointer;
-    z-index: 1000;
 }
 
-/* icono centrado */
 .whatsapp-float svg {
-    width: 32px;
-    height: 32px;
-    fill: white;
+    width: 55px;
+    height: 55px;
+    fill: #25D366;
+    transition: 0.3s;
 }
 
-/* =========================================
-   LOADING / ERROR
-========================================= */
-.loading,
-.error {
-    text-align: center;
-    padding: 20px;
+.whatsapp-float:hover svg {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px #25D366);
 }
