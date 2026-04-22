@@ -32,10 +32,10 @@ body {
 }
 
 /* =========================================
-   LOGO
+   LOGO (TAMAÑO RESTAURADO)
    ========================================= */
 .logo-container {
-    width: 120px;
+    width: 180px; /* 🔥 más grande como antes */
     margin-bottom: 10px;
     transition: transform 0.15s ease;
 }
@@ -56,14 +56,14 @@ body {
 }
 
 /* =========================================
-   🔥 TITULO (CORREGIDO Y FUNCIONAL)
+   🔥 TITULO (AJUSTADO)
    ========================================= */
 #titulo-imagen-web {
     display: block;
     margin: 20px auto;
 
-    width: 50vw;        /* 🔥 tamaño real más pequeño */
-    max-width: 600px;   /* 🔥 límite */
+    width: 65vw;        /* 🔥 más grande que antes */
+    max-width: 800px;   /* 🔥 mejor proporción */
 
     height: auto;
 }
@@ -140,7 +140,7 @@ body {
     color: #00ff88;
 }
 
-/* 🔥 descripción */
+/* descripción */
 .product-description {
     font-size: 0.95rem;
     line-height: 1.5;
