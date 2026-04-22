@@ -8,69 +8,61 @@
 }
 
 /* =========================================
-   🌈 FONDO ANIMADO ORIGINAL HOUSE
+   🔥 FONDO ANIMADO REAL (FUNCIONA)
 ========================================= */
 body {
     font-family: 'Roboto', sans-serif;
     color: white;
     overflow-x: hidden;
 
-    background: linear-gradient(135deg, #050505, #00ff88, #ff00ff);
-    background-size: 400% 400%;
+    background: linear-gradient(270deg,
+        #050505,
+        #00ff88,
+        #ff00ff,
+        #ff0040,
+        #ffffff,
+        #0a0a0a
+    );
 
-    animation: fondoNeon 16s ease infinite;
+    background-size: 600% 600%;
+    animation: fondoMove 18s ease infinite;
 }
 
-/* animación suave */
-@keyframes fondoNeon {
-    0% {
-        background: linear-gradient(135deg, #050505, #00ff88, #ff00ff);
-    }
-    25% {
-        background: linear-gradient(135deg, #0a0a0a, #ff0040, #8e44ad);
-    }
-    50% {
-        background: linear-gradient(135deg, #111111, #ffffff, #00ff88);
-    }
-    75% {
-        background: linear-gradient(135deg, #0a0a0a, #ff00ff, #ff0040);
-    }
-    100% {
-        background: linear-gradient(135deg, #050505, #00ff88, #ff00ff);
-    }
+/* ESTA SÍ FUNCIONA */
+@keyframes fondoMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* =========================================
-   ✨ BORDE NEÓN
+   ✨ BORDE NEÓN (VISIBLE)
 ========================================= */
-body::before {
+body::after {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
-
-    border: 2px solid rgba(255,255,200,0.2);
+    z-index: 999;
 
     box-shadow:
-        0 0 10px rgba(255,255,180,0.4),
-        0 0 25px rgba(255,255,180,0.3),
-        0 0 60px rgba(255,255,180,0.2);
+        0 0 20px rgba(255,255,180,0.6),
+        0 0 60px rgba(255,255,180,0.4),
+        0 0 120px rgba(255,255,180,0.2);
 
-    animation: neonBorde 4s ease-in-out infinite alternate;
+    animation: neonPulse 3s infinite alternate;
 }
 
-@keyframes neonBorde {
-    0% {
+@keyframes neonPulse {
+    from {
         box-shadow:
-            0 0 5px rgba(255,255,180,0.2),
-            0 0 15px rgba(255,255,180,0.2),
-            0 0 30px rgba(255,255,180,0.1);
+            0 0 10px rgba(255,255,180,0.3),
+            0 0 30px rgba(255,255,180,0.2);
     }
-    100% {
+    to {
         box-shadow:
-            0 0 15px rgba(255,255,180,0.5),
-            0 0 40px rgba(255,255,180,0.4),
-            0 0 80px rgba(255,255,180,0.3);
+            0 0 30px rgba(255,255,180,0.7),
+            0 0 80px rgba(255,255,180,0.5);
     }
 }
 
@@ -82,19 +74,11 @@ body::before {
     padding: 40px 0;
 }
 
-.header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* =========================================
-   LOGO
-========================================= */
+/* LOGO */
 .logo-container {
     width: 350px;
     max-width: 90%;
-    margin-bottom: 20px;
+    margin: auto;
 }
 
 #logo-img {
@@ -107,9 +91,7 @@ body::before {
     to { transform: rotate(360deg); }
 }
 
-/* =========================================
-   TITULO
-========================================= */
+/* TITULO */
 #titulo-imagen-web {
     width: 65vw;
     max-width: 800px;
@@ -117,16 +99,14 @@ body::before {
     display: block;
 }
 
-/* =========================================
-   SUBTITULO
-========================================= */
+/* SUBTITULO */
 .brand-subtitle {
     color: #00ff88;
     margin-top: 10px;
 }
 
 /* =========================================
-   FILTROS
+   FILTROS (ARREGLADO TEXTO)
 ========================================= */
 .filters-container {
     display: flex;
@@ -140,11 +120,8 @@ body::before {
     background: #111;
     border-radius: 30px;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.filter-btn:hover {
-    background: #222;
+    color: white; /* 🔥 IMPORTANTE */
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .filter-btn.active {
@@ -153,7 +130,7 @@ body::before {
 }
 
 /* =========================================
-   PRODUCTOS GRID
+   PRODUCTOS
 ========================================= */
 .products-grid {
     display: grid;
@@ -162,19 +139,11 @@ body::before {
     padding: 20px;
 }
 
-/* =========================================
-   PRODUCT CARD
-========================================= */
 .product-card {
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.75);
     padding: 20px;
     border-radius: 15px;
-    backdrop-filter: blur(4px);
-    transition: transform 0.3s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
+    backdrop-filter: blur(6px);
 }
 
 /* imagen */
@@ -186,6 +155,7 @@ body::before {
 /* textos */
 .product-name {
     margin-top: 10px;
+    color: white;
 }
 
 .product-price {
@@ -196,6 +166,7 @@ body::before {
 .product-description {
     margin-top: 10px;
     line-height: 1.5;
+    color: #ddd;
 }
 
 .product-fabric {
@@ -211,15 +182,10 @@ body::before {
     border-radius: 10px;
     color: white;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.whatsapp-btn:hover {
-    transform: scale(1.05);
 }
 
 /* =========================================
-   WHATSAPP ICONO (SIN FONDO)
+   WHATSAPP ICONO
 ========================================= */
 .whatsapp-float {
     position: fixed;
@@ -231,16 +197,10 @@ body::before {
     width: 55px;
     height: 55px;
     fill: #25D366;
-    transition: 0.3s;
-}
-
-.whatsapp-float:hover svg {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 10px #25D366);
 }
 
 /* =========================================
-   LOADING / ERROR
+   LOADING
 ========================================= */
 .loading,
 .error {
