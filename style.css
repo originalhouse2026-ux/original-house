@@ -35,11 +35,12 @@ body {
    LOGO (TAMAÑO RESTAURADO)
    ========================================= */
 .logo-container {
-    width: 180px; /* 🔥 más grande como antes */
-    margin-bottom: 10px;
+    width: 420px; /* 🔥 tamaño grande y controlado */
+    max-width: 90%;
+    
+    margin: 0 auto 20px auto;
     transition: transform 0.15s ease;
 }
-
 #logo-img {
     width: 100%;
     animation: girarLogo 12s linear infinite;
