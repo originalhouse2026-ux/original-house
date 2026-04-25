@@ -63,7 +63,7 @@ function parseCSV(text) {
 
             image: product['LINK_IMAGEN'] || '',
             description: product['DESCRIPCIÓN'] || '',
-            fabric: '250g Catar Fabric'
+            fabric: 'Algodón Catar 250 Gramos Oversize'
         };
     });
 }
