@@ -261,35 +261,47 @@ body::after {
     background: #1ebe5d !important;
 }
 
-/* WHATSAPP FLOTANTE */
+/* =========================================
+   WHATSAPP FLOTANTE
+========================================= */
+
 .whatsapp-float {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    z-index: 9999;
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 99999 !important;
 
-    width: 60px;
-    height: 60px;
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px !important;
+    min-height: 58px !important;
+    max-width: 58px !important;
+    max-height: 58px !important;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 
-    background: #25D366;
-    border-radius: 50%;
+    background: #25D366 !important;
+    border-radius: 50% !important;
+    text-decoration: none !important;
+    overflow: hidden !important;
 
-    text-decoration: none;
-
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35) !important;
 }
 
 .whatsapp-float svg {
-    width: 30px;
-    height: 30px;
-    fill: #ffffff;
-    display: block;
-}
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    max-width: 28px !important;
+    max-height: 28px !important;
 
+    fill: #ffffff !important;
+    display: block !important;
+    flex-shrink: 0 !important;
+}
 /* =========================================
    LOADING / ERROR
 ========================================= */
