@@ -214,6 +214,9 @@ body::after {
 
     flex-grow: 1;
     margin-bottom: 22px;
+
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 /* TELA */
