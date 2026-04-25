@@ -182,12 +182,13 @@ body::after {
 
 /* CONTENIDO INTERNO */
 .product-info {
-    padding: 28px 24px 24px 24px;
+    padding: 28px 28px 24px 28px;
 
     display: flex;
     flex-direction: column;
     flex: 1;
 }
+
 /* NOMBRE */
 .product-name {
     margin-top: 10px;
@@ -240,6 +241,8 @@ body::after {
     cursor: pointer;
 
     transition: 0.3s ease;
+
+    align-self: center;
 }
 
 .whatsapp-btn:hover {
