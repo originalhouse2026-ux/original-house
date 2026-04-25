@@ -206,7 +206,6 @@ body::after {
     margin-bottom: 14px;
 }
 
-/* DESCRIPCIÓN */
 .product-description {
     color: #dddddd;
     line-height: 1.7;
@@ -215,16 +214,19 @@ body::after {
     flex-grow: 1;
     margin-bottom: 22px;
 
-    padding-left: 12px;
-    padding-right: 12px;
-}
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 
-/* TELA */
 .product-fabric {
     color: #00ff88;
     font-weight: 700;
     font-size: 15px;
     margin-bottom: 18px;
+
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* BOTÓN WHATSAPP */
