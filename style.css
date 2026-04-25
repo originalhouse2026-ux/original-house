@@ -76,7 +76,7 @@ body::after {
 
 .header {
     text-align: center;
-    padding: 40px 0 25px 0;
+    padding: 35px 0 10px 0;
 }
 
 
@@ -112,12 +112,17 @@ body::after {
 
 .brand-subtitle {
     color: #ffffff;
-    margin-top: 12px;
-    margin-bottom: 8px;
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: 0.8px;
-    text-shadow: 0 0 12px rgba(0, 0, 0, 0.45);
+    margin-top: 8px;
+    margin-bottom: 4px;
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: 1.2;
+
+    text-shadow:
+        0 0 8px rgba(0, 0, 0, 0.65),
+        0 0 18px rgba(0, 0, 0, 0.45),
+        2px 2px 8px rgba(0, 0, 0, 0.55);
 }
 /* =========================================
    FILTROS
