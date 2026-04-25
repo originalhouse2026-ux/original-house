@@ -35,11 +35,12 @@ async function loadProducts() {
         console.error(error);
         loadingEl.style.display = 'none';
         errorEl.style.display = 'block';
+        errorEl.innerHTML = 'Error cargando productos';
     }
 }
 
 /* ================================
-   PARSER CSV (ROBUSTO)
+   PARSER CSV
 ================================ */
 function parseCSV(text) {
     const lines = text.split(/\r?\n/);
@@ -63,12 +64,13 @@ function parseCSV(text) {
 
             image: product['LINK_IMAGEN'] || '',
             description: product['DESCRIPCIÓN'] || '',
-           fabric: 'Algodón Catar 250 Gramos Oversize'
+            fabric: 'Algodón Catar 250 Gramos Oversize'
+        };
     });
 }
 
 /* ================================
-   DIVIDIR CSV (RESPETA COMAS)
+   DIVIDIR CSV
 ================================ */
 function splitCSVLine(line) {
     const result = [];
@@ -87,7 +89,10 @@ function splitCSVLine(line) {
     }
 
     result.push(current);
-    return result.map(v => v.replace(/^"|"$/g, '').trim());
+
+    return result.map(v =>
+        v.replace(/^"|"$/g, '').trim()
+    );
 }
 
 /* ================================
@@ -101,14 +106,15 @@ function renderProducts(products) {
         return;
     }
 
-    grid.innerHTML = products.map(product => createProductCard(product)).join('');
+    grid.innerHTML = products
+        .map(product => createProductCard(product))
+        .join('');
 }
 
 /* ================================
-   CARD DE PRODUCTO
+   CARD PRODUCTO
 ================================ */
 function createProductCard(product) {
-
     const mensaje = `Hola 👋, vengo desde la página web de Original House.
 
 Estoy interesado(a) en este producto:
@@ -118,7 +124,8 @@ Estoy interesado(a) en este producto:
 ¿Está disponible?
 Gracias 🙌`;
 
-    const whatsappUrl = `https://wa.me/573337318929?text=${encodeURIComponent(mensaje)}`;
+    const whatsappUrl =
+        `https://wa.me/573337318929?text=${encodeURIComponent(mensaje)}`;
 
     return `
         <article class="product-card" data-category="${product.category}">
@@ -133,7 +140,10 @@ Gracias 🙌`;
 
                 <div class="product-fabric">${product.fabric}</div>
 
-                <button class="whatsapp-btn" onclick="window.open('${whatsappUrl}', '_blank')">
+                <button
+                    class="whatsapp-btn"
+                    onclick="window.open('${whatsappUrl}', '_blank')"
+                >
                     Comprar por WhatsApp
                 </button>
             </div>
@@ -149,7 +159,10 @@ function setupFilters() {
 
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
-            buttons.forEach(b => b.classList.remove('active'));
+            buttons.forEach(b =>
+                b.classList.remove('active')
+            );
+
             btn.classList.add('active');
 
             const filter = btn.dataset.filter.toLowerCase();
@@ -173,8 +186,11 @@ function setupFilters() {
 function setupLogo() {
     const logo = document.getElementById('logo-container');
 
+    if (!logo) return;
+
     logo.addEventListener('click', () => {
-        logo.style.transform = 'scale(0.9)';
+        logo.style.transform = 'scale(0.95)';
+
         setTimeout(() => {
             logo.style.transform = 'scale(1)';
         }, 150);
