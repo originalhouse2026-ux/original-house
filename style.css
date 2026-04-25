@@ -74,11 +74,13 @@ body::after {
     }
 }
 
+/* =========================================
+   HEADER
+========================================= */
 .header {
     text-align: center;
     padding: 50px 0 8px 0;
 }
-
 
 /* LOGO */
 .logo-container {
@@ -110,6 +112,7 @@ body::after {
     display: block;
 }
 
+/* SUBTITULO */
 .brand-subtitle {
     color: #ffffff;
     margin-top: 25px;
@@ -124,6 +127,7 @@ body::after {
         0 0 22px rgba(0, 0, 0, 0.55),
         3px 3px 10px rgba(0, 0, 0, 0.60);
 }
+
 /* =========================================
    FILTROS
 ========================================= */
@@ -193,6 +197,7 @@ body::after {
     display: flex;
     flex-direction: column;
     flex: 1;
+    text-align: center;
 }
 
 /* NOMBRE */
@@ -202,6 +207,7 @@ body::after {
     color: white;
     font-size: 20px;
     font-weight: 700;
+    text-align: center;
 }
 
 /* PRECIO */
@@ -210,8 +216,10 @@ body::after {
     font-size: 30px;
     font-weight: 700;
     margin-bottom: 14px;
+    text-align: center;
 }
 
+/* DESCRIPCIÓN */
 .product-description {
     color: #dddddd;
     line-height: 1.7;
@@ -223,7 +231,10 @@ body::after {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
+}
 
+/* TELA */
 .product-fabric {
     color: #00ff88;
     font-weight: 700;
@@ -233,6 +244,7 @@ body::after {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 /* BOTÓN WHATSAPP */
@@ -256,6 +268,7 @@ body::after {
 
     box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
 }
+
 .whatsapp-btn:hover {
     transform: translateY(-2px);
     background: #1ebe5d !important;
@@ -271,37 +284,28 @@ body::after {
     right: 20px !important;
     z-index: 99999 !important;
 
-    width: 58px !important;
-    height: 58px !important;
-    min-width: 58px !important;
-    min-height: 58px !important;
-    max-width: 58px !important;
-    max-height: 58px !important;
+    width: 55px !important;
+    height: 55px !important;
 
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
 
-    background: #25D366 !important;
-    border-radius: 50% !important;
     text-decoration: none !important;
+    border-radius: 50% !important;
     overflow: hidden !important;
 
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35) !important;
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
-.whatsapp-float svg {
-    width: 28px !important;
-    height: 28px !important;
-    min-width: 28px !important;
-    min-height: 28px !important;
-    max-width: 28px !important;
-    max-height: 28px !important;
-
-    fill: #ffffff !important;
+.whatsapp-float img {
+    width: 55px !important;
+    height: 55px !important;
     display: block !important;
-    flex-shrink: 0 !important;
+    object-fit: contain !important;
 }
+
 /* =========================================
    LOADING / ERROR
 ========================================= */
@@ -331,5 +335,9 @@ body::after {
     .whatsapp-btn {
         width: 100%;
         text-align: center;
+    }
+
+    .brand-subtitle {
+        font-size: 32px;
     }
 }
