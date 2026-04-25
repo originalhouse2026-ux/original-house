@@ -125,17 +125,19 @@ Gracias 🙌`;
         <article class="product-card" data-category="${product.category}">
             <img src="${product.image}" alt="${product.name}" class="product-image">
 
-            <div class="product-category">${product.category}</div>
-            <h3 class="product-name">${product.name}</h3>
-            <div class="product-price">$${product.price}</div>
+            <div class="product-info">
+                <h3 class="product-name">${product.name}</h3>
 
-            <p class="product-description">${product.description}</p>
+                <div class="product-price">$${product.price}</div>
 
-            <div class="product-fabric">${product.fabric}</div>
+                <p class="product-description">${product.description}</p>
 
-            <button class="whatsapp-btn" onclick="window.open('${whatsappUrl}', '_blank')">
-                Comprar por WhatsApp
-            </button>
+                <div class="product-fabric">${product.fabric}</div>
+
+                <button class="whatsapp-btn" onclick="window.open('${whatsappUrl}', '_blank')">
+                    Comprar por WhatsApp
+                </button>
+            </div>
         </article>
     `;
 }
