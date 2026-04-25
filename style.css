@@ -74,12 +74,10 @@ body::after {
     }
 }
 
-/* =========================================
-   HEADER
-========================================= */
+/* HEADER */
 .header {
     text-align: center;
-    padding: 40px 0;
+    padding: 40px 0 70px 0;
 }
 
 /* LOGO */
@@ -115,7 +113,10 @@ body::after {
 /* SUBTITULO */
 .brand-subtitle {
     color: #00ff88;
-    margin-top: 10px;
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
 /* =========================================
