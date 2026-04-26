@@ -199,10 +199,7 @@ body::after {
     margin: 0 auto;
 }
 
-.product-card[data-category="outfits"] .product-image {
-    height: 210px;
-    object-fit: cover;
-}
+.product-card[data-category="outfits"] .product-image {    height: 210px;    object-fit: contain;    background: #111;}
 
 /* CONTENIDO INTERNO */
 .product-info {
