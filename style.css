@@ -190,6 +190,11 @@ body::after {
     border-radius: 0;
 }
 
+/* SOLO CORRECCIÓN PARA OUTFITS */
+.product-card[data-category="outfits"] .product-image {
+    height: 320px;
+    object-fit: cover;
+}
 /* CONTENIDO INTERNO */
 .product-info {
     padding: 28px 28px 24px 28px;
