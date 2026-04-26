@@ -183,15 +183,18 @@ body::after {
     min-height: 100%;
 }
 
-/* IMAGEN */
+/* IMAGEN GENERAL */
 .product-image {
     width: 100%;
     display: block;
     border-radius: 0;
+    height: 420px;
+    object-fit: cover;
+    object-position: center;
 }
 
 /* =========================================
-   SOLO CORRECCIÓN DE TAMAÑO PARA OUTFITS
+   CORRECCIÓN REAL PARA OUTFITS
 ========================================= */
 
 .product-card[data-category="outfits"] {
@@ -201,11 +204,11 @@ body::after {
 
 .product-card[data-category="outfits"] .product-image {
     width: 100%;
-    height: 320px;
-    object-fit: contain;
+    height: 420px; /* mismo tamaño visual que los demás */
+    object-fit: cover; /* evita imagen miniatura */
     object-position: center;
     background: #111;
-    padding: 10px;
+    padding: 0;
 }
 
 /* CONTENIDO INTERNO */
@@ -359,4 +362,3 @@ body::after {
         font-size: 32px;
     }
 }
- 
