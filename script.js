@@ -46,27 +46,36 @@ function parseCSV(text) {
     const lines = text.split(/\r?\n/);
     const headers = splitCSVLine(lines[0]);
 
-    return lines.slice(1).map(line => {
-        const values = splitCSVLine(line);
-        const product = {};
+    return lines
+        .slice(1)
+        .filter(line => line.trim() !== '')
+        .map(line => {
+            const values = splitCSVLine(line);
+            const product = {};
 
-        headers.forEach((header, i) => {
-            product[header] = values[i] || '';
+            headers.forEach((header, i) => {
+                product[header] = values[i] || '';
+            });
+
+            return {
+                name: product['NOMBRE'] || 'Sin nombre',
+
+                price: product['PRECIO'] || '0',
+
+                // CORREGIDO: sin tilde en CATEGORIA
+                category: (product['CATEGORIA'] || 'otros')
+                    .toString()
+                    .trim()
+                    .toLowerCase(),
+
+                image: product['LINK_IMAGEN'] || '',
+
+                // CORREGIDO: sin tilde en DESCRIPCION
+                description: product['DESCRIPCION'] || '',
+
+                fabric: 'Algodón Catar 250 Gramos Oversize'
+            };
         });
-
-        return {
-            name: product['NOMBRE'] || 'Sin nombre',
-            price: product['PRECIO'] || '0',
-            category: (product['CATEGORÍA'] || 'otros')
-                .toString()
-                .trim()
-                .toLowerCase(),
-
-            image: product['LINK_IMAGEN'] || '',
-            description: product['DESCRIPCIÓN'] || '',
-            fabric: 'Algodón Catar 250 Gramos Oversize'
-        };
-    });
 }
 
 /* ================================
@@ -165,13 +174,19 @@ function setupFilters() {
 
             btn.classList.add('active');
 
-            const filter = btn.dataset.filter.toLowerCase();
+            const filter = btn.dataset.filter
+                .toString()
+                .trim()
+                .toLowerCase();
 
             if (filter === 'all') {
                 filteredProducts = [...allProducts];
             } else {
                 filteredProducts = allProducts.filter(product =>
-                    product.category === filter
+                    product.category
+                        .toString()
+                        .trim()
+                        .toLowerCase() === filter
                 );
             }
 
