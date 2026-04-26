@@ -199,13 +199,16 @@ body::after {
 
 .product-card[data-category="outfits"] {
     max-width: 340px;
-    margin: 0 auto;
 }
+
+/* ← AQUÍ ESTÁ LA SOLUCIÓN:
+   quitamos margin: 0 auto;
+   para que inicie desde la izquierda */
 
 .product-card[data-category="outfits"] .product-image {
     width: 100%;
-    height: 420px; /* mismo tamaño visual que los demás */
-    object-fit: cover; /* evita imagen miniatura */
+    height: 420px;
+    object-fit: cover;
     object-position: center;
     background: #111;
     padding: 0;
