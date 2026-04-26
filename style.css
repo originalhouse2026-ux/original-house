@@ -190,11 +190,20 @@ body::after {
     border-radius: 0;
 }
 
-/* SOLO AJUSTE EXACTO PARA OUTFITS */
+/* =========================================
+   SOLO CORRECCIÓN DE TAMAÑO PARA OUTFITS
+========================================= */
+
+.product-card[data-category="outfits"] {
+    max-width: 340px;
+    margin: 0 auto;
+}
+
 .product-card[data-category="outfits"] .product-image {
-    height: 220px;
+    height: 210px;
     object-fit: cover;
 }
+
 /* CONTENIDO INTERNO */
 .product-info {
     padding: 28px 28px 24px 28px;
