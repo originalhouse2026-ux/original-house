@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
     setupLogo();
 });
 
-/* ================================
+/* =================================
    CARGAR PRODUCTOS
-================================ */
+================================= */
 async function loadProducts() {
     const loadingEl = document.getElementById('loading');
     const errorEl = document.getElementById('error');
@@ -33,7 +33,7 @@ async function loadProducts() {
         if (loadingEl) loadingEl.style.display = 'none';
 
     } catch (error) {
-        console.error(error);
+        console.error('ERROR:', error);
 
         if (loadingEl) loadingEl.style.display = 'none';
 
@@ -44,13 +44,15 @@ async function loadProducts() {
     }
 }
 
-/* ================================
-   PARSER CSV
-================================ */
+/* =================================
+   PARSE CSV
+================================= */
 function parseCSV(text) {
-    const lines = text.split(/\r?\n/).filter(line => line.trim() !== '');
+    const lines = text
+        .split(/\r?\n/)
+        .filter(line => line.trim() !== '');
 
-    if (lines.length === 0) return [];
+    if (!lines.length) return [];
 
     const headers = splitCSVLine(lines[0]);
 
@@ -63,28 +65,31 @@ function parseCSV(text) {
         });
 
         /* 
-        IMPORTANTE:
-        aquí aceptamos columnas con y sin tilde
-        para que no se dañen descripción ni categorías
+        AQUÍ ESTÁ LA SOLUCIÓN REAL:
+        soporta columnas con tilde y sin tilde
         */
 
         const category =
             product['CATEGORÍA'] ||
             product['CATEGORIA'] ||
-            'otros';
+            product['CATEGORY'] ||
+            '';
 
         const description =
             product['DESCRIPCIÓN'] ||
             product['DESCRIPCION'] ||
+            product['DESCRIPTION'] ||
             '';
 
         return {
             name:
                 product['NOMBRE'] ||
+                product['NAME'] ||
                 'Sin nombre',
 
             price:
                 product['PRECIO'] ||
+                product['PRICE'] ||
                 '0',
 
             category:
@@ -95,10 +100,14 @@ function parseCSV(text) {
 
             image:
                 product['LINK_IMAGEN'] ||
+                product['IMAGEN'] ||
+                product['IMAGE'] ||
                 '',
 
             description:
-                description,
+                description
+                    .toString()
+                    .trim(),
 
             fabric:
                 'Algodón Catar 250 Gramos Oversize'
@@ -106,42 +115,52 @@ function parseCSV(text) {
     });
 }
 
-/* ================================
-   DIVIDIR CSV
-================================ */
+/* =================================
+   DIVIDIR CSV CORRECTAMENTE
+================================= */
 function splitCSVLine(line) {
     const result = [];
     let current = '';
     let insideQuotes = false;
 
-    for (let char of line) {
+    for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+
         if (char === '"') {
             insideQuotes = !insideQuotes;
-        } else if (char === ',' && !insideQuotes) {
+        } 
+        else if (char === ',' && !insideQuotes) {
             result.push(current);
             current = '';
-        } else {
+        } 
+        else {
             current += char;
         }
     }
 
     result.push(current);
 
-    return result.map(value =>
-        value.replace(/^"|"$/g, '').trim()
+    return result.map(item =>
+        item
+            .replace(/^"|"$/g, '')
+            .trim()
     );
 }
 
-/* ================================
+/* =================================
    RENDER PRODUCTOS
-================================ */
+================================= */
 function renderProducts(products) {
     const grid = document.getElementById('products-grid');
 
     if (!grid) return;
 
-    if (!products || products.length === 0) {
-        grid.innerHTML = '<div class="no-products">No products found</div>';
+    if (!products.length) {
+        grid.innerHTML = `
+            <div class="no-products">
+                No products found
+            </div>
+        `;
         return;
     }
 
@@ -150,9 +169,9 @@ function renderProducts(products) {
         .join('');
 }
 
-/* ================================
+/* =================================
    CARD PRODUCTO
-================================ */
+================================= */
 function createProductCard(product) {
     const mensaje = `Hola 👋, vengo desde la página web de Original House.
 
@@ -168,9 +187,9 @@ Gracias 🙌`;
 
     return `
         <article class="product-card" data-category="${product.category}">
-            <img 
-                src="${product.image}" 
-                alt="${product.name}" 
+            <img
+                src="${product.image}"
+                alt="${product.name}"
                 class="product-image"
             >
 
@@ -202,22 +221,21 @@ Gracias 🙌`;
     `;
 }
 
-/* ================================
-   FILTROS
-================================ */
+/* =================================
+   FILTROS (CORREGIDO)
+================================= */
 function setupFilters() {
     const buttons = document.querySelectorAll('.filter-btn');
 
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
-            buttons.forEach(b =>
-                b.classList.remove('active')
+            buttons.forEach(button =>
+                button.classList.remove('active')
             );
 
             btn.classList.add('active');
 
             const filter = btn.dataset.filter
-                .toString()
                 .trim()
                 .toLowerCase();
 
@@ -225,10 +243,7 @@ function setupFilters() {
                 filteredProducts = [...allProducts];
             } else {
                 filteredProducts = allProducts.filter(product =>
-                    product.category
-                        .toString()
-                        .trim()
-                        .toLowerCase() === filter
+                    product.category === filter
                 );
             }
 
@@ -237,9 +252,9 @@ function setupFilters() {
     });
 }
 
-/* ================================
-   LOGO INTERACCIÓN
-================================ */
+/* =================================
+   LOGO
+================================= */
 function setupLogo() {
     const logo = document.getElementById('logo-container');
 
