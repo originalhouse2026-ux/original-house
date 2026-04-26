@@ -18,9 +18,9 @@ async function loadProducts() {
     const grid = document.getElementById('products-grid');
 
     try {
-        loadingEl.style.display = 'block';
-        errorEl.style.display = 'none';
-        grid.innerHTML = '';
+        if (loadingEl) loadingEl.style.display = 'block';
+        if (errorEl) errorEl.style.display = 'none';
+        if (grid) grid.innerHTML = '';
 
         const response = await fetch(GOOGLE_SHEETS_CSV_URL);
         const csvText = await response.text();
@@ -29,13 +29,18 @@ async function loadProducts() {
         filteredProducts = [...allProducts];
 
         renderProducts(filteredProducts);
-        loadingEl.style.display = 'none';
+
+        if (loadingEl) loadingEl.style.display = 'none';
 
     } catch (error) {
         console.error(error);
-        loadingEl.style.display = 'none';
-        errorEl.style.display = 'block';
-        errorEl.innerHTML = 'Error cargando productos';
+
+        if (loadingEl) loadingEl.style.display = 'none';
+
+        if (errorEl) {
+            errorEl.style.display = 'block';
+            errorEl.innerHTML = 'Error cargando productos';
+        }
     }
 }
 
@@ -43,39 +48,62 @@ async function loadProducts() {
    PARSER CSV
 ================================ */
 function parseCSV(text) {
-    const lines = text.split(/\r?\n/);
+    const lines = text.split(/\r?\n/).filter(line => line.trim() !== '');
+
+    if (lines.length === 0) return [];
+
     const headers = splitCSVLine(lines[0]);
 
-    return lines
-        .slice(1)
-        .filter(line => line.trim() !== '')
-        .map(line => {
-            const values = splitCSVLine(line);
-            const product = {};
+    return lines.slice(1).map(line => {
+        const values = splitCSVLine(line);
+        const product = {};
 
-            headers.forEach((header, i) => {
-                product[header] = values[i] || '';
-            });
+        headers.forEach((header, i) => {
+            product[header.trim()] = values[i] || '';
+        });
 
-            return {
-                name: product['NOMBRE'] || 'Sin nombre',
+        /* 
+        IMPORTANTE:
+        aquí aceptamos columnas con y sin tilde
+        para que no se dañen descripción ni categorías
+        */
 
-                price: product['PRECIO'] || '0',
+        const category =
+            product['CATEGORÍA'] ||
+            product['CATEGORIA'] ||
+            'otros';
 
-                // CORREGIDO: sin tilde en CATEGORIA
-                category: (product['CATEGORIA'] || 'otros')
+        const description =
+            product['DESCRIPCIÓN'] ||
+            product['DESCRIPCION'] ||
+            '';
+
+        return {
+            name:
+                product['NOMBRE'] ||
+                'Sin nombre',
+
+            price:
+                product['PRECIO'] ||
+                '0',
+
+            category:
+                category
                     .toString()
                     .trim()
                     .toLowerCase(),
 
-                image: product['LINK_IMAGEN'] || '',
+            image:
+                product['LINK_IMAGEN'] ||
+                '',
 
-                // CORREGIDO: sin tilde en DESCRIPCION
-                description: product['DESCRIPCION'] || '',
+            description:
+                description,
 
-                fabric: 'Algodón Catar 250 Gramos Oversize'
-            };
-        });
+            fabric:
+                'Algodón Catar 250 Gramos Oversize'
+        };
+    });
 }
 
 /* ================================
@@ -99,8 +127,8 @@ function splitCSVLine(line) {
 
     result.push(current);
 
-    return result.map(v =>
-        v.replace(/^"|"$/g, '').trim()
+    return result.map(value =>
+        value.replace(/^"|"$/g, '').trim()
     );
 }
 
@@ -110,7 +138,9 @@ function splitCSVLine(line) {
 function renderProducts(products) {
     const grid = document.getElementById('products-grid');
 
-    if (products.length === 0) {
+    if (!grid) return;
+
+    if (!products || products.length === 0) {
         grid.innerHTML = '<div class="no-products">No products found</div>';
         return;
     }
@@ -138,16 +168,28 @@ Gracias 🙌`;
 
     return `
         <article class="product-card" data-category="${product.category}">
-            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <img 
+                src="${product.image}" 
+                alt="${product.name}" 
+                class="product-image"
+            >
 
             <div class="product-info">
-                <h3 class="product-name">${product.name}</h3>
+                <h3 class="product-name">
+                    ${product.name}
+                </h3>
 
-                <div class="product-price">$${product.price}</div>
+                <div class="product-price">
+                    $${product.price}
+                </div>
 
-                <p class="product-description">${product.description}</p>
+                <p class="product-description">
+                    ${product.description}
+                </p>
 
-                <div class="product-fabric">${product.fabric}</div>
+                <div class="product-fabric">
+                    ${product.fabric}
+                </div>
 
                 <button
                     class="whatsapp-btn"
