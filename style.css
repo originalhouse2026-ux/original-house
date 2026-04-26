@@ -168,8 +168,8 @@ body::after {
     gap: 22px;
     padding: 20px;
     align-items: stretch;
+    justify-items: start;
 }
-
 /* CARD COMPLETA */
 .product-card {
     background: rgba(0, 0, 0, 0.78);
