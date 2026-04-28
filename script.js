@@ -1,3 +1,6 @@
+/* =================================
+   GOOGLE SHEETS
+================================= */
 const GOOGLE_SHEETS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRHh-u6rZPLRMNhaw2ILjUFgHULwrpkDogwQBREHx6fHIh7k_mduLn4DjftOkRbpAEY8lUrkajwaxQK/pub?output=csv';
 
 let allProducts = [];
@@ -64,11 +67,6 @@ function parseCSV(text) {
             product[header.trim()] = values[i] || '';
         });
 
-        /* 
-        AQUÍ ESTÁ LA SOLUCIÓN REAL:
-        soporta columnas con tilde y sin tilde
-        */
-
         const category =
             product['CATEGORÍA'] ||
             product['CATEGORIA'] ||
@@ -128,11 +126,11 @@ function splitCSVLine(line) {
 
         if (char === '"') {
             insideQuotes = !insideQuotes;
-        } 
+        }
         else if (char === ',' && !insideQuotes) {
             result.push(current);
             current = '';
-        } 
+        }
         else {
             current += char;
         }
@@ -170,17 +168,17 @@ function renderProducts(products) {
 }
 
 /* =================================
-   CARD PRODUCTO
+   CARD PRODUCTO (MENSAJE WHATSAPP CORREGIDO)
 ================================= */
 function createProductCard(product) {
     const mensaje = `Hola 👋, vengo desde la página web de Original House.
 
-Estoy interesado(a) en este producto:
-🧢 ${product.name}
+Quiero pedir este producto:
+
+🔥 ${product.name}
 💰 $${product.price}
 
-¿Está disponible?
-Gracias 🙌`;
+Quedo atento 🙌`;
 
     const whatsappUrl =
         `https://wa.me/573337318929?text=${encodeURIComponent(mensaje)}`;
@@ -222,7 +220,7 @@ Gracias 🙌`;
 }
 
 /* =================================
-   FILTROS (CORREGIDO)
+   FILTROS
 ================================= */
 function setupFilters() {
     const buttons = document.querySelectorAll('.filter-btn');
