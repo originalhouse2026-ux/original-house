@@ -8,7 +8,7 @@
 }
 
 /* =========================================
-   🔥 FONDO ANIMADO REAL
+   FONDO ANIMADO
 ========================================= */
 body {
     font-family: 'Roboto', sans-serif;
@@ -31,24 +31,30 @@ body {
 }
 
 @keyframes fondoMove {
+
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
+
 }
 
 /* =========================================
-   ✨ BORDE NEÓN
+   BORDE NEON
 ========================================= */
 body::after {
+
     content: "";
     position: fixed;
     inset: 0;
+
     pointer-events: none;
     z-index: 999;
 
@@ -61,6 +67,7 @@ body::after {
 }
 
 @keyframes neonPulse {
+
     from {
         box-shadow:
             0 0 10px rgba(255,255,180,0.3),
@@ -72,6 +79,7 @@ body::after {
             0 0 30px rgba(255,255,180,0.7),
             0 0 80px rgba(255,255,180,0.5);
     }
+
 }
 
 /* =========================================
@@ -82,7 +90,6 @@ body::after {
     padding: 50px 0 8px 0;
 }
 
-/* LOGO */
 .logo-container {
     width: 350px;
     max-width: 90%;
@@ -95,6 +102,7 @@ body::after {
 }
 
 @keyframes girarLogo {
+
     from {
         transform: rotate(0);
     }
@@ -102,9 +110,9 @@ body::after {
     to {
         transform: rotate(360deg);
     }
+
 }
 
-/* TITULO */
 #titulo-imagen-web {
     width: 65vw;
     max-width: 800px;
@@ -112,13 +120,16 @@ body::after {
     display: block;
 }
 
-/* SUBTITULO */
 .brand-subtitle {
+
     color: #ffffff;
+
     margin-top: 25px;
     margin-bottom: 4px;
+
     font-size: 52px;
     font-weight: 900;
+
     letter-spacing: 1px;
     line-height: 1.2;
 
@@ -132,20 +143,28 @@ body::after {
    FILTROS
 ========================================= */
 .filters-container {
+
     display: flex;
     justify-content: center;
     gap: 10px;
+
     margin: 20px 0;
     flex-wrap: wrap;
 }
 
 .filter-btn {
+
     padding: 10px 20px;
+
     background: #111;
+
     border-radius: 30px;
     cursor: pointer;
+
     color: white;
+
     border: 1px solid rgba(255,255,255,0.1);
+
     transition: 0.3s;
 }
 
@@ -163,149 +182,211 @@ body::after {
 }
 
 .products-grid {
+
     display: grid;
+
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
     gap: 22px;
     padding: 20px;
+
     align-items: stretch;
     justify-items: start;
 }
-/* CARD COMPLETA */
+
 .product-card {
+
     background: rgba(0, 0, 0, 0.78);
+
     border-radius: 18px;
+
     backdrop-filter: blur(8px);
+
     overflow: hidden;
 
     display: flex;
     flex-direction: column;
+
     height: 100%;
     min-height: 100%;
 }
 
-/* IMAGEN GENERAL */
 .product-image {
+
     width: 100%;
-    display: block;
-    border-radius: 0;
     height: 420px;
+
+    display: block;
+
     object-fit: cover;
     object-position: center;
 }
-
-/* =========================================
-   CORRECCIÓN REAL PARA OUTFITS
-========================================= */
 
 .product-card[data-category="outfits"] {
     max-width: 340px;
 }
 
-/* ← AQUÍ ESTÁ LA SOLUCIÓN:
-   quitamos margin: 0 auto;
-   para que inicie desde la izquierda */
-
 .product-card[data-category="outfits"] .product-image {
+
     width: 100%;
     height: 420px;
+
     object-fit: cover;
     object-position: center;
+
     background: #111;
+
     padding: 0;
 }
 
-/* CONTENIDO INTERNO */
 .product-info {
+
     padding: 28px 28px 24px 28px;
 
     display: flex;
     flex-direction: column;
+
     flex: 1;
+
     text-align: center;
 }
 
-/* NOMBRE */
 .product-name {
+
     margin-top: 10px;
     margin-bottom: 10px;
+
     color: white;
+
     font-size: 20px;
     font-weight: 700;
-    text-align: center;
 }
 
-/* PRECIO */
 .product-price {
+
     color: #00ff88;
+
     font-size: 30px;
     font-weight: 700;
+
     margin-bottom: 14px;
-    text-align: center;
 }
 
-/* DESCRIPCIÓN */
 .product-description {
+
     color: #dddddd;
+
     line-height: 1.7;
     font-size: 16px;
 
     flex-grow: 1;
+
     margin-bottom: 22px;
 
     width: 90%;
+
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
 }
 
-/* TELA */
 .product-fabric {
+
     color: #00ff88;
+
     font-weight: 700;
     font-size: 15px;
+
     margin-bottom: 18px;
 
     width: 90%;
+
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
 }
 
-/* BOTÓN WHATSAPP */
+/* =========================================
+   BOTON WHATSAPP
+========================================= */
 .whatsapp-btn {
+
     margin-top: auto;
+
     width: fit-content;
 
     padding: 14px 22px;
+
     background: #25D366 !important;
+
     border: none;
     border-radius: 12px;
 
     color: #ffffff !important;
+
     font-weight: 700;
     font-size: 15px;
+
     text-decoration: none;
+
     cursor: pointer;
 
     transition: 0.3s ease;
+
     align-self: center;
 
     box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
 }
 
 .whatsapp-btn:hover {
+
     transform: translateY(-2px);
+
     background: #1ebe5d !important;
+}
+
+/* =========================================
+   AVISO PROMOCIONES
+========================================= */
+.promo-notice {
+
+    margin-top: 14px;
+    padding: 0 10px;
+
+    text-align: center;
+
+    opacity: 0.82;
+}
+
+.promo-notice p {
+
+    color: rgba(255,255,255,0.82);
+
+    font-size: 11px;
+    line-height: 1.5;
+
+    margin-bottom: 4px;
+
+    letter-spacing: 0.3px;
+}
+
+.promo-notice span {
+
+    color: rgba(255,255,255,0.55);
+
+    font-size: 10px;
+
+    letter-spacing: 0.4px;
 }
 
 /* =========================================
    WHATSAPP FLOTANTE
 ========================================= */
-
 .whatsapp-float {
+
     position: fixed !important;
+
     bottom: 20px !important;
     right: 20px !important;
+
     z-index: 99999 !important;
 
     width: 55px !important;
@@ -315,19 +396,25 @@ body::after {
     align-items: center !important;
     justify-content: center !important;
 
-    text-decoration: none !important;
     border-radius: 50% !important;
+
     overflow: hidden !important;
 
+    text-decoration: none !important;
+
     background: transparent !important;
+
     box-shadow: none !important;
 }
 
 .whatsapp-float img {
+
     width: 55px !important;
     height: 55px !important;
-    display: block !important;
+
     object-fit: contain !important;
+
+    display: block !important;
 }
 
 /* =========================================
@@ -335,8 +422,11 @@ body::after {
 ========================================= */
 .loading,
 .error {
+
     text-align: center;
+
     padding: 20px;
+
     font-size: 18px;
 }
 
@@ -344,6 +434,7 @@ body::after {
    RESPONSIVE
 ========================================= */
 @media (max-width: 768px) {
+
     #titulo-imagen-web {
         width: 90%;
     }
@@ -364,4 +455,13 @@ body::after {
     .brand-subtitle {
         font-size: 32px;
     }
+
+    .promo-notice p {
+        font-size: 10px;
+    }
+
+    .promo-notice span {
+        font-size: 9px;
+    }
+
 }
