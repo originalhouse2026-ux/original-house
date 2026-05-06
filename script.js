@@ -16,19 +16,23 @@ document.addEventListener('DOMContentLoaded', function () {
    CARGAR PRODUCTOS
 ================================= */
 async function loadProducts() {
+
     const loadingEl = document.getElementById('loading');
     const errorEl = document.getElementById('error');
     const grid = document.getElementById('products-grid');
 
     try {
+
         if (loadingEl) loadingEl.style.display = 'block';
         if (errorEl) errorEl.style.display = 'none';
         if (grid) grid.innerHTML = '';
 
         const response = await fetch(GOOGLE_SHEETS_CSV_URL);
+
         const csvText = await response.text();
 
         allProducts = parseCSV(csvText);
+
         filteredProducts = [...allProducts];
 
         renderProducts(filteredProducts);
@@ -36,21 +40,28 @@ async function loadProducts() {
         if (loadingEl) loadingEl.style.display = 'none';
 
     } catch (error) {
+
         console.error('ERROR:', error);
 
         if (loadingEl) loadingEl.style.display = 'none';
 
         if (errorEl) {
+
             errorEl.style.display = 'block';
+
             errorEl.innerHTML = 'Error cargando productos';
+
         }
+
     }
+
 }
 
 /* =================================
    PARSE CSV
 ================================= */
 function parseCSV(text) {
+
     const lines = text
         .split(/\r?\n/)
         .filter(line => line.trim() !== '');
@@ -60,7 +71,9 @@ function parseCSV(text) {
     const headers = splitCSVLine(lines[0]);
 
     return lines.slice(1).map(line => {
+
         const values = splitCSVLine(line);
+
         const product = {};
 
         headers.forEach((header, i) => {
@@ -80,6 +93,7 @@ function parseCSV(text) {
             '';
 
         return {
+
             name:
                 product['NOMBRE'] ||
                 product['NAME'] ||
@@ -109,31 +123,48 @@ function parseCSV(text) {
 
             fabric:
                 'Algodón Catar 250 Gramos Oversize'
+
         };
+
     });
+
 }
 
 /* =================================
-   DIVIDIR CSV CORRECTAMENTE
+   DIVIDIR CSV
 ================================= */
 function splitCSVLine(line) {
+
     const result = [];
+
     let current = '';
+
     let insideQuotes = false;
 
     for (let i = 0; i < line.length; i++) {
+
         const char = line[i];
 
         if (char === '"') {
+
             insideQuotes = !insideQuotes;
+
         }
+
         else if (char === ',' && !insideQuotes) {
+
             result.push(current);
+
             current = '';
+
         }
+
         else {
+
             current += char;
+
         }
+
     }
 
     result.push(current);
@@ -143,22 +174,26 @@ function splitCSVLine(line) {
             .replace(/^"|"$/g, '')
             .trim()
     );
+
 }
 
 /* =================================
    RENDER PRODUCTOS
 ================================= */
 function renderProducts(products) {
+
     const grid = document.getElementById('products-grid');
 
     if (!grid) return;
 
     if (!products.length) {
+
         grid.innerHTML = `
             <div class="no-products">
                 No products found
             </div>
         `;
+
         return;
     }
 
@@ -218,16 +253,6 @@ Quedo atento 🙌`;
                     Comprar por WhatsApp
                 </button>
 
-                <div class="promo-notice">
-                    <p>
-                        Promociones y descuentos sujetos a términos de campaña.
-                    </p>
-
-                    <span>
-                        No acumulable con otras promociones.
-                    </span>
-                </div>
-
             </div>
         </article>
     `;
@@ -237,9 +262,11 @@ Quedo atento 🙌`;
    FILTROS
 ================================= */
 function setupFilters() {
+
     const buttons = document.querySelectorAll('.filter-btn');
 
     buttons.forEach(btn => {
+
         btn.addEventListener('click', () => {
 
             buttons.forEach(button =>
@@ -253,16 +280,25 @@ function setupFilters() {
                 .toLowerCase();
 
             if (filter === 'all') {
+
                 filteredProducts = [...allProducts];
-            } else {
+
+            }
+
+            else {
+
                 filteredProducts = allProducts.filter(product =>
                     product.category === filter
                 );
+
             }
 
             renderProducts(filteredProducts);
+
         });
+
     });
+
 }
 
 /* =================================
@@ -279,8 +315,11 @@ function setupLogo() {
         logo.style.transform = 'scale(0.95)';
 
         setTimeout(() => {
+
             logo.style.transform = 'scale(1)';
+
         }, 150);
 
     });
+
 }
