@@ -7,9 +7,11 @@ let allProducts = [];
 let filteredProducts = [];
 
 document.addEventListener('DOMContentLoaded', function () {
+
     loadProducts();
     setupFilters();
     setupLogo();
+
 });
 
 /* =================================
@@ -24,7 +26,9 @@ async function loadProducts() {
     try {
 
         if (loadingEl) loadingEl.style.display = 'block';
+
         if (errorEl) errorEl.style.display = 'none';
+
         if (grid) grid.innerHTML = '';
 
         const response = await fetch(GOOGLE_SHEETS_CSV_URL);
@@ -39,7 +43,9 @@ async function loadProducts() {
 
         if (loadingEl) loadingEl.style.display = 'none';
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.error('ERROR:', error);
 
@@ -77,7 +83,9 @@ function parseCSV(text) {
         const product = {};
 
         headers.forEach((header, i) => {
+
             product[header.trim()] = values[i] || '';
+
         });
 
         const category =
@@ -122,7 +130,7 @@ function parseCSV(text) {
                     .trim(),
 
             fabric:
-                'Algodón Catar 250 Gramos Oversize'
+                product['TELA'] || ''
 
         };
 
@@ -195,11 +203,13 @@ function renderProducts(products) {
         `;
 
         return;
+
     }
 
     grid.innerHTML = products
         .map(product => createProductCard(product))
         .join('');
+
 }
 
 /* =================================
@@ -221,7 +231,7 @@ Quedo atento 🙌`;
 
     return `
         <article class="product-card" data-category="${product.category}">
-            
+
             <img
                 src="${product.image}"
                 alt="${product.name}"
@@ -242,9 +252,11 @@ Quedo atento 🙌`;
                     ${product.description}
                 </p>
 
-                <div class="product-fabric">
-                    ${product.fabric}
-                </div>
+                ${product.fabric ? `
+                    <div class="product-fabric">
+                        ${product.fabric}
+                    </div>
+                ` : ''}
 
                 <button
                     class="whatsapp-btn"
@@ -254,8 +266,10 @@ Quedo atento 🙌`;
                 </button>
 
             </div>
+
         </article>
     `;
+
 }
 
 /* =================================
