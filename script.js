@@ -168,9 +168,10 @@ function renderProducts(products) {
 }
 
 /* =================================
-   CARD PRODUCTO (MENSAJE WHATSAPP CORREGIDO)
+   CARD PRODUCTO
 ================================= */
 function createProductCard(product) {
+
     const mensaje = `Hola 👋, vengo desde la página web de Original House.
 
 Quiero pedir este producto:
@@ -185,6 +186,7 @@ Quedo atento 🙌`;
 
     return `
         <article class="product-card" data-category="${product.category}">
+            
             <img
                 src="${product.image}"
                 alt="${product.name}"
@@ -192,6 +194,7 @@ Quedo atento 🙌`;
             >
 
             <div class="product-info">
+
                 <h3 class="product-name">
                     ${product.name}
                 </h3>
@@ -214,6 +217,17 @@ Quedo atento 🙌`;
                 >
                     Comprar por WhatsApp
                 </button>
+
+                <div class="promo-notice">
+                    <p>
+                        Promociones y descuentos sujetos a términos de campaña.
+                    </p>
+
+                    <span>
+                        No acumulable con otras promociones.
+                    </span>
+                </div>
+
             </div>
         </article>
     `;
@@ -227,6 +241,7 @@ function setupFilters() {
 
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
+
             buttons.forEach(button =>
                 button.classList.remove('active')
             );
@@ -254,15 +269,18 @@ function setupFilters() {
    LOGO
 ================================= */
 function setupLogo() {
+
     const logo = document.getElementById('logo-container');
 
     if (!logo) return;
 
     logo.addEventListener('click', () => {
+
         logo.style.transform = 'scale(0.95)';
 
         setTimeout(() => {
             logo.style.transform = 'scale(1)';
         }, 150);
+
     });
 }
