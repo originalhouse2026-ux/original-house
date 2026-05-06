@@ -1,53 +1,151 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Original House</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet"
+    >
+
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- =========================================
+     HEADER
+========================================= -->
 <header class="header">
+
     <div class="header-container">
 
-        <div id="logo-container" class="logo-container">
-            <img src="logo-house.png" id="logo-img" alt="Original House Logo">
+        <!-- LOGO -->
+        <div
+            id="logo-container"
+            class="logo-container"
+        >
+
+            <img
+                src="logo-house.png"
+                id="logo-img"
+                alt="Original House Logo"
+            >
+
         </div>
 
-        <img src="titulo-graffiti.png" id="titulo-imagen-web" alt="Original House">
+        <!-- TITULO -->
+        <img
+            src="titulo-graffiti.png"
+            id="titulo-imagen-web"
+            alt="Original House"
+        >
 
+        <!-- SUBTITULO -->
         <p class="brand-subtitle">
             No vendemos ropa, vendemos presencia
         </p>
 
     </div>
+
 </header>
 
-<!-- FILTROS -->
+<!-- =========================================
+     FILTROS
+========================================= -->
 <section class="filters-section">
+
     <div class="filters-container">
-        <button class="filter-btn active" data-filter="all">All Products</button>
-        <button class="filter-btn" data-filter="caps">Caps</button>
-        <button class="filter-btn" data-filter="t-shirts">T-shirts</button>
-        <button class="filter-btn" data-filter="outfits">Outfits</button>
+
+        <button
+            class="filter-btn active"
+            data-filter="all"
+        >
+            All Products
+        </button>
+
+        <button
+            class="filter-btn"
+            data-filter="caps"
+        >
+            Caps
+        </button>
+
+        <button
+            class="filter-btn"
+            data-filter="t-shirts"
+        >
+            T-shirts
+        </button>
+
+        <button
+            class="filter-btn"
+            data-filter="outfits"
+        >
+            Outfits
+        </button>
+
     </div>
+
 </section>
 
-<!-- PRODUCTOS -->
+<!-- =========================================
+     PRODUCTOS
+========================================= -->
 <main class="products-container">
-    <div class="products-grid" id="products-grid"></div>
 
-    <div class="loading" id="loading">Loading...</div>
-    <div class="error" id="error"></div>
+    <div
+        class="products-grid"
+        id="products-grid"
+    ></div>
+
+    <!-- LOADING -->
+    <div
+        class="loading"
+        id="loading"
+    >
+        Loading...
+    </div>
+
+    <!-- ERROR -->
+    <div
+        class="error"
+        id="error"
+    ></div>
+
 </main>
 
-<!-- WHATSAPP FLOTANTE -->
+<!-- =========================================
+     FOOTER LEGAL
+========================================= -->
+<footer class="footer-legal">
+
+    <div class="footer-legal-content">
+
+        <p>
+            Promociones y descuentos sujetos a términos de campaña.
+        </p>
+
+        <span>
+            No acumulable con otras promociones.
+        </span>
+
+    </div>
+
+</footer>
+
+<!-- =========================================
+     WHATSAPP FLOTANTE
+========================================= -->
 <a
     href="https://wa.me/573337318929"
     class="whatsapp-float"
@@ -55,12 +153,17 @@
     rel="noopener noreferrer"
     aria-label="WhatsApp"
 >
+
     <img
         src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
         alt="WhatsApp"
     >
+
 </a>
 
+<!-- =========================================
+     SCRIPT
+========================================= -->
 <script src="script.js"></script>
 
 </body>
