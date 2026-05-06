@@ -178,7 +178,7 @@ body::after {
 ========================================= */
 .products-container {
     width: 100%;
-    padding-bottom: 80px;
+    padding-bottom: 10px;
 }
 
 .products-grid {
@@ -344,40 +344,6 @@ body::after {
 }
 
 /* =========================================
-   AVISO PROMOCIONES
-========================================= */
-.promo-notice {
-
-    margin-top: 14px;
-    padding: 0 10px;
-
-    text-align: center;
-
-    opacity: 0.82;
-}
-
-.promo-notice p {
-
-    color: rgba(255,255,255,0.82);
-
-    font-size: 11px;
-    line-height: 1.5;
-
-    margin-bottom: 4px;
-
-    letter-spacing: 0.3px;
-}
-
-.promo-notice span {
-
-    color: rgba(255,255,255,0.55);
-
-    font-size: 10px;
-
-    letter-spacing: 0.4px;
-}
-
-/* =========================================
    WHATSAPP FLOTANTE
 ========================================= */
 .whatsapp-float {
@@ -415,6 +381,56 @@ body::after {
     object-fit: contain !important;
 
     display: block !important;
+}
+
+/* =========================================
+   FOOTER LEGAL
+========================================= */
+.footer-legal{
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 18px 20px 30px;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.15)
+        );
+
+    backdrop-filter: blur(4px);
+}
+
+.footer-legal-content{
+
+    text-align: center;
+
+    opacity: 0.82;
+}
+
+.footer-legal p{
+
+    color: rgba(255,255,255,0.82);
+
+    font-size: 11px;
+
+    margin-bottom: 5px;
+
+    letter-spacing: 0.3px;
+}
+
+.footer-legal span{
+
+    color: rgba(255,255,255,0.55);
+
+    font-size: 10px;
+
+    letter-spacing: 0.4px;
 }
 
 /* =========================================
@@ -456,11 +472,11 @@ body::after {
         font-size: 32px;
     }
 
-    .promo-notice p {
+    .footer-legal p {
         font-size: 10px;
     }
 
-    .promo-notice span {
+    .footer-legal span {
         font-size: 9px;
     }
 
