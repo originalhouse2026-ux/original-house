@@ -1,197 +1,744 @@
-<!DOCTYPE html>
-<html lang="es">
+/* =========================================
+ORIGINAL HOUSE PREMIUM 2026
+========================================= */
 
-<head>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    <meta charset="UTF-8">
+:root{
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+--black-1:#050505;
+--black-2:#0a0a0a;
+--black-3:#111111;
+--black-4:#161616;
+--black-5:#1b1b1b;
 
-    <title>Original House | No vendemos ropa, vendemos presencia</title>
+--green:#00ff88;
+--green-hover:#00e67a;
 
-    <meta name="description"
-        content="Original House. Streetwear premium. Oversize. No vendemos ropa, vendemos presencia.">
+--white:#ffffff;
+--gray:#cfcfcf;
+```
 
-    <meta name="theme-color" content="#00ff88">
+}
 
-    <link rel="stylesheet" href="style.css">
+/* =========================================
+BODY
+========================================= */
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-        rel="stylesheet">
+body{
 
-</head>
+```
+font-family:'Roboto',sans-serif;
 
-<body>
+color:#ffffff;
 
-    <!-- =========================================
-         HERO
-    ========================================= -->
+overflow-x:hidden;
 
-    <header class="header">
+min-height:100vh;
 
-        <div class="header-container">
+background:linear-gradient(
+    -45deg,
+    var(--black-1),
+    var(--black-2),
+    var(--black-3),
+    var(--black-4),
+    var(--black-5),
+    var(--black-2)
+);
 
-            <div class="logo-container">
+background-size:400% 400%;
 
-                <img
-                    src="logo-house.png"
-                    id="logo-img"
-                    alt="Original House Logo">
+animation:darkShift 35s ease infinite;
+```
 
-            </div>
+}
 
-            <img
-                src="titulo-graffiti.png"
-                id="titulo-imagen-web"
-                alt="Original House">
+@keyframes darkShift{
 
-            <p class="brand-subtitle">
-                No vendemos ropa, vendemos presencia
-            </p>
+```
+0%{
+    background-position:0% 50%;
+}
 
-            <p class="brand-description">
-                Streetwear premium diseñado para quienes prefieren destacar antes que pertenecer.
-            </p>
+50%{
+    background-position:100% 50%;
+}
 
-        </div>
+100%{
+    background-position:0% 50%;
+}
+```
 
-    </header>
+}
 
-    <!-- =========================================
-         FILTROS
-    ========================================= -->
+/* =========================================
+EFECTO PREMIUM SUAVE
+========================================= */
 
-    <section class="filters-section">
+body::after{
 
-        <div class="filters-container">
+```
+content:"";
 
-            <button
-                class="filter-btn active"
-                data-filter="all">
-                ALL PRODUCTS
-            </button>
+position:fixed;
 
-            <button
-                class="filter-btn"
-                data-filter="caps">
-                CAPS
-            </button>
+inset:0;
 
-            <button
-                class="filter-btn"
-                data-filter="t-shirts">
-                T-SHIRTS
-            </button>
+pointer-events:none;
 
-            <button
-                class="filter-btn"
-                data-filter="outfits">
-                OUTFITS
-            </button>
+z-index:0;
 
-        </div>
+box-shadow:
+    inset 0 0 120px rgba(0,255,136,0.03),
+    inset 0 0 220px rgba(0,255,136,0.02);
+```
 
-    </section>
+}
 
-    <!-- =========================================
-         PRODUCTOS
-    ========================================= -->
+/* =========================================
+HEADER
+========================================= */
 
-    <main class="products-container">
+.header{
 
-        <div
-            class="products-grid"
-            id="products-grid">
-        </div>
+```
+position:relative;
 
-        <div
-            class="loading"
-            id="loading">
+z-index:2;
 
-            Cargando colección...
+text-align:center;
 
-        </div>
+padding:60px 20px 30px;
+```
 
-        <div
-            class="error"
-            id="error">
-        </div>
+}
 
-    </main>
+.header-container{
 
-    <!-- =========================================
-         MANIFIESTO
-    ========================================= -->
+```
+width:100%;
 
-    <section class="manifesto-section">
+max-width:1200px;
 
-        <div class="manifesto-container">
+margin:auto;
+```
 
-            <h2>
-                ORIGINAL HOUSE
-            </h2>
+}
 
-            <p>
-                No seguimos tendencias.
-            </p>
+.logo-container{
 
-            <p>
-                Diseñamos prendas para quienes aprendieron a vestir como piensan:
-                sin permiso.
-            </p>
+```
+width:220px;
 
-            <p>
-                Porque la presencia no se compra.
-                Se construye.
-            </p>
+margin:0 auto 25px auto;
+```
 
-        </div>
+}
 
-    </section>
+#logo-img{
 
-    <!-- =========================================
-         FOOTER
-    ========================================= -->
+```
+width:100%;
 
-    <footer class="footer-legal">
+display:block;
+```
 
-        <div class="footer-legal-content">
+}
 
-            <p>
-                Promociones y descuentos sujetos a términos de campaña.
-            </p>
+#titulo-imagen-web{
 
-            <span>
-                No acumulable con otras promociones.
-            </span>
+```
+width:65vw;
 
-        </div>
+max-width:850px;
 
-    </footer>
+display:block;
 
-    <!-- =========================================
-         WHATSAPP
-    ========================================= -->
+margin:0 auto;
+```
 
-    <a
-        href="https://wa.me/573337318929"
-        class="whatsapp-float"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="WhatsApp">
+}
 
-        <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-            alt="WhatsApp">
+.brand-subtitle{
 
-    </a>
+```
+margin-top:25px;
 
-    <!-- =========================================
-         SCRIPT
-    ========================================= -->
+font-size:52px;
 
-    <script src="script.js"></script>
+font-weight:900;
 
-</body>
+letter-spacing:2px;
 
-</html>
+line-height:1.1;
+
+text-transform:uppercase;
+
+color:#ffffff;
+
+text-shadow:
+    0 0 20px rgba(0,0,0,0.8);
+```
+
+}
+
+.brand-description{
+
+```
+margin-top:18px;
+
+color:#cfcfcf;
+
+font-size:18px;
+
+font-weight:300;
+
+max-width:700px;
+
+margin-left:auto;
+margin-right:auto;
+
+line-height:1.8;
+```
+
+}
+
+/* =========================================
+FILTROS
+========================================= */
+
+.filters-section{
+
+```
+position:relative;
+
+z-index:2;
+```
+
+}
+
+.filters-container{
+
+```
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:12px;
+
+flex-wrap:wrap;
+
+padding:20px;
+```
+
+}
+
+.filter-btn{
+
+```
+padding:12px 24px;
+
+background:rgba(255,255,255,0.04);
+
+color:#ffffff;
+
+border:1px solid rgba(255,255,255,0.08);
+
+border-radius:40px;
+
+cursor:pointer;
+
+font-weight:600;
+
+transition:all .3s ease;
+```
+
+}
+
+.filter-btn:hover{
+
+```
+border-color:rgba(0,255,136,0.30);
+
+transform:translateY(-2px);
+```
+
+}
+
+.filter-btn.active{
+
+```
+background:var(--green);
+
+color:#000;
+
+font-weight:700;
+
+box-shadow:
+    0 0 15px rgba(0,255,136,0.25);
+```
+
+}
+
+/* =========================================
+PRODUCTOS
+========================================= */
+
+.products-container{
+
+```
+position:relative;
+
+z-index:2;
+
+width:100%;
+
+max-width:1600px;
+
+margin:auto;
+
+padding-bottom:50px;
+```
+
+}
+
+.products-grid{
+
+```
+display:grid;
+
+grid-template-columns:
+    repeat(auto-fit,minmax(300px,1fr));
+
+gap:24px;
+
+padding:25px;
+```
+
+}
+
+.product-card{
+
+```
+background:rgba(10,10,10,0.92);
+
+border:1px solid rgba(255,255,255,0.06);
+
+border-radius:18px;
+
+overflow:hidden;
+
+display:flex;
+
+flex-direction:column;
+
+backdrop-filter:blur(8px);
+
+transition:all .35s ease;
+```
+
+}
+
+.product-card:hover{
+
+```
+transform:translateY(-6px);
+
+border-color:rgba(0,255,136,0.25);
+
+box-shadow:
+    0 15px 40px rgba(0,0,0,0.45);
+```
+
+}
+
+.product-image{
+
+```
+width:100%;
+
+height:420px;
+
+object-fit:cover;
+
+display:block;
+```
+
+}
+
+.product-info{
+
+```
+padding:28px;
+
+text-align:center;
+
+display:flex;
+
+flex-direction:column;
+
+flex:1;
+```
+
+}
+
+.product-name{
+
+```
+font-size:22px;
+
+font-weight:700;
+
+margin-bottom:12px;
+
+color:#ffffff;
+```
+
+}
+
+.product-price{
+
+```
+font-size:30px;
+
+font-weight:900;
+
+color:var(--green);
+
+margin-bottom:16px;
+```
+
+}
+
+.product-description{
+
+```
+width:90%;
+
+margin-left:auto;
+margin-right:auto;
+
+color:#d7d7d7;
+
+line-height:1.8;
+
+font-size:15px;
+
+margin-bottom:22px;
+
+flex-grow:1;
+```
+
+}
+
+.product-fabric{
+
+```
+width:90%;
+
+margin-left:auto;
+margin-right:auto;
+
+color:var(--green);
+
+font-size:15px;
+
+font-weight:700;
+
+margin-bottom:20px;
+```
+
+}
+
+/* =========================================
+BOTON WHATSAPP TARJETA
+========================================= */
+
+.whatsapp-btn{
+
+```
+margin-top:auto;
+
+align-self:center;
+
+text-decoration:none;
+
+background:#25D366;
+
+color:#ffffff;
+
+padding:14px 24px;
+
+border-radius:12px;
+
+border:1px solid rgba(255,255,255,0.08);
+
+font-size:15px;
+
+font-weight:700;
+
+transition:.3s ease;
+
+box-shadow:
+    0 8px 20px rgba(37,211,102,0.25);
+```
+
+}
+
+.whatsapp-btn:hover{
+
+```
+transform:
+    translateY(-3px)
+    scale(1.02);
+
+background:#1ebe5d;
+
+box-shadow:
+    0 10px 25px rgba(37,211,102,0.35);
+```
+
+}
+
+/* =========================================
+MANIFIESTO
+========================================= */
+
+.manifesto-section{
+
+```
+position:relative;
+
+z-index:2;
+
+padding:80px 25px;
+```
+
+}
+
+.manifesto-container{
+
+```
+max-width:900px;
+
+margin:auto;
+
+text-align:center;
+```
+
+}
+
+.manifesto-container h2{
+
+```
+font-size:44px;
+
+font-weight:900;
+
+margin-bottom:30px;
+
+letter-spacing:2px;
+```
+
+}
+
+.manifesto-container p{
+
+```
+color:#d7d7d7;
+
+font-size:20px;
+
+line-height:1.9;
+
+margin-bottom:15px;
+```
+
+}
+
+/* =========================================
+FOOTER
+========================================= */
+
+.footer-legal{
+
+```
+position:relative;
+
+z-index:2;
+
+width:100%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:30px 20px 40px;
+
+background:
+    linear-gradient(
+        to top,
+        rgba(0,0,0,0.60),
+        rgba(0,0,0,0.10)
+    );
+```
+
+}
+
+.footer-legal-content{
+
+```
+text-align:center;
+
+opacity:.8;
+```
+
+}
+
+.footer-legal p{
+
+```
+color:rgba(255,255,255,.80);
+
+font-size:11px;
+
+margin-bottom:5px;
+```
+
+}
+
+.footer-legal span{
+
+```
+color:rgba(255,255,255,.50);
+
+font-size:10px;
+```
+
+}
+
+/* =========================================
+LOADING
+========================================= */
+
+.loading,
+.error{
+
+```
+text-align:center;
+
+padding:40px 20px;
+
+font-size:18px;
+
+color:#ffffff;
+```
+
+}
+
+/* =========================================
+WHATSAPP FLOTANTE
+========================================= */
+
+.whatsapp-float{
+
+```
+position:fixed;
+
+right:20px;
+
+bottom:20px;
+
+width:60px;
+
+height:60px;
+
+z-index:9999;
+
+border-radius:50%;
+```
+
+}
+
+.whatsapp-float img{
+
+```
+width:100%;
+
+height:100%;
+
+display:block;
+```
+
+}
+
+/* =========================================
+RESPONSIVE
+========================================= */
+
+@media (max-width:768px){
+
+```
+.logo-container{
+
+    width:170px;
+}
+
+#titulo-imagen-web{
+
+    width:95%;
+}
+
+.brand-subtitle{
+
+    font-size:30px;
+}
+
+.brand-description{
+
+    font-size:16px;
+}
+
+.products-grid{
+
+    grid-template-columns:1fr;
+}
+
+.product-image{
+
+    height:380px;
+}
+
+.product-price{
+
+    font-size:26px;
+}
+
+.manifesto-container h2{
+
+    font-size:30px;
+}
+
+.manifesto-container p{
+
+    font-size:17px;
+}
+
+.whatsapp-btn{
+
+    width:100%;
+
+    text-align:center;
+}
+```
+
+}
