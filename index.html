@@ -1,170 +1,197 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Original House</title>
+    <title>Original House | No vendemos ropa, vendemos presencia</title>
+
+    <meta name="description"
+        content="Original House. Streetwear premium. Oversize. No vendemos ropa, vendemos presencia.">
+
+    <meta name="theme-color" content="#00ff88">
 
     <link rel="stylesheet" href="style.css">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
 
 </head>
 
 <body>
 
-<!-- =========================================
-     HEADER
-========================================= -->
-<header class="header">
+    <!-- =========================================
+         HERO
+    ========================================= -->
 
-    <div class="header-container">
+    <header class="header">
 
-        <!-- LOGO -->
-        <div
-            id="logo-container"
-            class="logo-container"
-        >
+        <div class="header-container">
+
+            <div class="logo-container">
+
+                <img
+                    src="logo-house.png"
+                    id="logo-img"
+                    alt="Original House Logo">
+
+            </div>
 
             <img
-                src="logo-house.png"
-                id="logo-img"
-                alt="Original House Logo"
-            >
+                src="titulo-graffiti.png"
+                id="titulo-imagen-web"
+                alt="Original House">
+
+            <p class="brand-subtitle">
+                No vendemos ropa, vendemos presencia
+            </p>
+
+            <p class="brand-description">
+                Streetwear premium diseñado para quienes prefieren destacar antes que pertenecer.
+            </p>
 
         </div>
 
-        <!-- TITULO -->
+    </header>
+
+    <!-- =========================================
+         FILTROS
+    ========================================= -->
+
+    <section class="filters-section">
+
+        <div class="filters-container">
+
+            <button
+                class="filter-btn active"
+                data-filter="all">
+                ALL PRODUCTS
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="caps">
+                CAPS
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="t-shirts">
+                T-SHIRTS
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="outfits">
+                OUTFITS
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- =========================================
+         PRODUCTOS
+    ========================================= -->
+
+    <main class="products-container">
+
+        <div
+            class="products-grid"
+            id="products-grid">
+        </div>
+
+        <div
+            class="loading"
+            id="loading">
+
+            Cargando colección...
+
+        </div>
+
+        <div
+            class="error"
+            id="error">
+        </div>
+
+    </main>
+
+    <!-- =========================================
+         MANIFIESTO
+    ========================================= -->
+
+    <section class="manifesto-section">
+
+        <div class="manifesto-container">
+
+            <h2>
+                ORIGINAL HOUSE
+            </h2>
+
+            <p>
+                No seguimos tendencias.
+            </p>
+
+            <p>
+                Diseñamos prendas para quienes aprendieron a vestir como piensan:
+                sin permiso.
+            </p>
+
+            <p>
+                Porque la presencia no se compra.
+                Se construye.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer class="footer-legal">
+
+        <div class="footer-legal-content">
+
+            <p>
+                Promociones y descuentos sujetos a términos de campaña.
+            </p>
+
+            <span>
+                No acumulable con otras promociones.
+            </span>
+
+        </div>
+
+    </footer>
+
+    <!-- =========================================
+         WHATSAPP
+    ========================================= -->
+
+    <a
+        href="https://wa.me/573337318929"
+        class="whatsapp-float"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="WhatsApp">
+
         <img
-            src="titulo-graffiti.png"
-            id="titulo-imagen-web"
-            alt="Original House"
-        >
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp">
 
-        <!-- SUBTITULO -->
-        <p class="brand-subtitle">
-            No vendemos ropa, vendemos presencia
-        </p>
+    </a>
 
-    </div>
+    <!-- =========================================
+         SCRIPT
+    ========================================= -->
 
-</header>
-
-<!-- =========================================
-     FILTROS
-========================================= -->
-<section class="filters-section">
-
-    <div class="filters-container">
-
-        <button
-            class="filter-btn active"
-            data-filter="all"
-        >
-            All Products
-        </button>
-
-        <button
-            class="filter-btn"
-            data-filter="caps"
-        >
-            Caps
-        </button>
-
-        <button
-            class="filter-btn"
-            data-filter="t-shirts"
-        >
-            T-shirts
-        </button>
-
-        <button
-            class="filter-btn"
-            data-filter="outfits"
-        >
-            Outfits
-        </button>
-
-    </div>
-
-</section>
-
-<!-- =========================================
-     PRODUCTOS
-========================================= -->
-<main class="products-container">
-
-    <div
-        class="products-grid"
-        id="products-grid"
-    ></div>
-
-    <!-- LOADING -->
-    <div
-        class="loading"
-        id="loading"
-    >
-        Loading...
-    </div>
-
-    <!-- ERROR -->
-    <div
-        class="error"
-        id="error"
-    ></div>
-
-</main>
-
-<!-- =========================================
-     FOOTER LEGAL
-========================================= -->
-<footer class="footer-legal">
-
-    <div class="footer-legal-content">
-
-        <p>
-            Promociones y descuentos sujetos a términos de campaña.
-        </p>
-
-        <span>
-            No acumulable con otras promociones.
-        </span>
-
-    </div>
-
-</footer>
-
-<!-- =========================================
-     WHATSAPP FLOTANTE
-========================================= -->
-<a
-    href="https://wa.me/573337318929"
-    class="whatsapp-float"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="WhatsApp"
->
-
-    <img
-        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-        alt="WhatsApp"
-    >
-
-</a>
-
-<!-- =========================================
-     SCRIPT
-========================================= -->
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
