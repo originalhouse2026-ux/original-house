@@ -35,20 +35,20 @@
                 ORIGINAL HOUSE 2026
             </div>
 
-            <h1>
-                NO NACIMOS<br>
-                PARA ENCAJAR
-            </h1>
+            
+               <h1>
+NO VENDEMOS ROPA.<br>
+VENDEMOS PRESENCIA.
+</h1>
+            
+<h2>
+Destaca antes que pertenecer.
+</h2>
 
-            <h2>
-                Fuimos creados para destacar.
-            </h2>
-
-            <p>
-                Streetwear premium para quienes aprendieron
-                a vestir como piensan:
-                sin permiso.
-            </p>
+           <p>
+Streetwear premium para quienes aprendieron
+a destacar antes que pertenecer.
+</p>
 
             <a href="#products-grid" class="hero-btn">
                 VER COLECCIÓN
@@ -107,6 +107,32 @@
             </div>
 
         </div>
+<section class="stats-section">
+
+    <div class="stats-grid">
+
+        <div class="stat-box">
+            <h3>66+</h3>
+            <p>Diseños disponibles</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>250G</h3>
+            <p>Algodón Premium</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>DTF</h3>
+            <p>Alta calidad</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>OH</h3>
+            <p>Original House</p>
+        </div>
+
+    </div>
+
 
     </section>
 
@@ -249,3 +275,62 @@
 </body>
 
 </html>
+        
+/* =========================================
+   STATS
+========================================= */
+
+.stats-section{
+    position:relative;
+    z-index:2;
+    padding:40px 25px 70px;
+}
+
+.stats-grid{
+    max-width:1200px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+}
+
+.stat-box{
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:18px;
+
+    padding:30px;
+
+    text-align:center;
+
+    backdrop-filter:blur(8px);
+}
+
+.stat-box h3{
+    color:#00ff88;
+
+    font-size:40px;
+
+    font-weight:900;
+
+    margin-bottom:10px;
+}
+
+.stat-box p{
+    color:#cfcfcf;
+
+    font-size:15px;
+}
+
+@media(max-width:768px){
+
+    .stats-grid{
+
+        grid-template-columns:1fr 1fr;
+    }
+
+}
