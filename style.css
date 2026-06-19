@@ -439,3 +439,152 @@ body::after{
         text-align:center;
     }
 }
+/* =========================================
+HERO PREMIUM ORIGINAL HOUSE
+========================================= */
+
+.hero{
+position:relative;
+min-height:100vh;
+display:flex;
+align-items:center;
+padding:0 8%;
+
+```
+background:
+    linear-gradient(
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.80)
+    ),
+    url('assets/hero/hero-principal.png');
+
+background-size:cover;
+background-position:center center;
+background-repeat:no-repeat;
+```
+
+}
+
+.hero-content{
+max-width:700px;
+z-index:2;
+}
+
+.hero-tag{
+color:#00ff88;
+font-size:14px;
+font-weight:800;
+letter-spacing:4px;
+text-transform:uppercase;
+margin-bottom:15px;
+}
+
+.hero h1{
+font-size:90px;
+font-weight:900;
+line-height:.9;
+margin-bottom:20px;
+text-transform:uppercase;
+}
+
+.hero h2{
+font-size:34px;
+font-weight:700;
+margin-bottom:15px;
+}
+
+.hero p{
+color:#d7d7d7;
+font-size:20px;
+line-height:1.7;
+margin-bottom:35px;
+max-width:650px;
+}
+
+.hero-btn{
+display:inline-block;
+background:#00ff88;
+color:#000;
+text-decoration:none;
+padding:18px 40px;
+border-radius:50px;
+font-weight:900;
+transition:.3s;
+}
+
+.hero-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 0 35px rgba(0,255,136,.35);
+}
+
+/* =========================================
+IDENTIDAD
+========================================= */
+
+.identity-section{
+position:relative;
+z-index:2;
+padding:70px 25px;
+}
+
+.identity-grid{
+max-width:1200px;
+margin:auto;
+
+```
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+```
+
+}
+
+.identity-card{
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.06);
+border-radius:18px;
+padding:30px;
+text-align:center;
+}
+
+.identity-card h3{
+color:#00ff88;
+font-size:24px;
+margin-bottom:10px;
+}
+
+.identity-card p{
+color:#cfcfcf;
+margin:0;
+}
+
+/* =========================================
+RESPONSIVE HERO
+========================================= */
+
+@media (max-width:768px){
+
+```
+.hero{
+    min-height:85vh;
+    padding:60px 25px;
+}
+
+.hero h1{
+    font-size:52px;
+}
+
+.hero h2{
+    font-size:24px;
+}
+
+.hero p{
+    font-size:16px;
+}
+
+.identity-grid{
+    grid-template-columns:1fr;
+}
+```
+
+}
