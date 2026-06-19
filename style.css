@@ -606,3 +606,55 @@ RESPONSIVE HERO
 ```
 
 }
+/* =========================================
+STATS PREMIUM
+========================================= */
+
+.stats-section{
+    position:relative;
+    z-index:2;
+    padding:80px 20px;
+}
+
+.stats-grid{
+    max-width:1200px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.stat-box{
+    background:rgba(255,255,255,0.03);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:20px;
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    backdrop-filter:blur(10px);
+}
+
+.stat-box h3{
+    color:#00ff88;
+    font-size:40px;
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.stat-box p{
+    color:#cfcfcf;
+    font-size:15px;
+}
+
+@media(max-width:768px){
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
